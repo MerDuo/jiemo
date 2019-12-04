@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:linc="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="bottom">
+
+<!--    &lt;!&ndash;    <com.example.jiemo.Top2View&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:id="@+id/top2"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_alignParentTop="true" />&ndash;&gt;-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:background="#fff">-->
+
+<!--        <com.example.jiemo.ImageTextView-->
+<!--            android:id="@+id/sy"-->
+<!--            android:background="#fff"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:paddingLeft="50dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_weight="1"-->
+<!--            linc:text="大家"-->
+<!--            linc:text_color="#778899"-->
+<!--            linc:text_size="4dp"-->
+<!--            linc:img_src="@drawable/shouye"/>-->
+
+
+<!--        <com.example.jiemo.ImageTextView-->
+<!--            android:id="@+id/wo"-->
+<!--            android:background="#fff"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:paddingLeft="100dp"-->
+<!--            android:layout_weight="1"-->
+<!--            linc:text="我的"-->
+<!--            linc:text_color="#778899"-->
+<!--            linc:text_size="4sp"-->
+<!--            linc:img_src="@drawable/wo"/>-->
+
+<!--    </LinearLayout>-->
+
+
+    <ImageView
+        android:id="@+id/jia"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/plus"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        />
+
+</RelativeLayout>

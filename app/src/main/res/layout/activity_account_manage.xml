@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".accountManage"
+    android:background="#fafafa">
+    <include layout="@layout/top2" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignTop="@+id/view1"
+        android:layout_marginTop="60sp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="当前账号"
+            android:textColor="#000"
+            ></TextView>
+
+        <RelativeLayout
+            android:id="@+id/img2"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            android:background="#ffffff"
+            android:layout_marginTop="5sp">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/qq"
+                android:layout_marginLeft="20sp"></ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ayato"
+                android:textColor="#000"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="5sp"
+                android:layout_toLeftOf="@id/img2"
+                tools:ignore="NotSibling"
+                android:layout_marginLeft="80sp"></TextView>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="130sp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="账号绑定"
+        android:textColor="#000"></TextView>
+
+    <RelativeLayout
+        android:id="@+id/img1"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        android:background="#ffffff"
+        android:layout_marginTop="5sp">
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/phone"
+        android:layout_marginLeft="20sp"></ImageView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="绑定手机"
+            android:textColor="#000"
+            android:gravity="center"
+            android:layout_toLeftOf="@id/img2"
+            tools:ignore="NotSibling"
+            android:layout_marginLeft="80sp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5sp"></TextView>
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/right"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20sp"></ImageView>
+    </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

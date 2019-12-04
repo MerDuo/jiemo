@@ -9,22 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".securitySetting">
-
-        </activity>
-        <activity android:name=".accountManage" >
+        <activity android:name=".personalDocument">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".add" >
+        <activity android:name=".hhhhhhhhhhh" />
+        <activity android:name=".documentEditer">
 
         </activity>
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".securitySetting" />
+        <activity android:name=".accountManage" />
+        <activity android:name=".add" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".mine" />
     </application>
 
 </manifest>

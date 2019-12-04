@@ -3,4 +3,9 @@
     <color name="colorPrimary">#D2F5EE</color>
     <color name="colorPrimaryDark">#D2F5EE</color>
     <color name="colorAccent">#D81B60</color>
+    <!--title的颜色-->
+    <color name="white">#ffffff</color>
+    <color name="colortitle">#D2F5EE</color>
+    <color name="textcolor">#666767</color>
+    <color name="line">#C9C9C9</color>
 </resources>

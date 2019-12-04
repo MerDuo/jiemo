@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".personalDocument"
+    android:background="@color/white">
+
+    <fragment
+        android:id="@+id/title_fragement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="cn.edu.cdut.jiemo.titleFragment"
+        tools:ignore="MissingConstraints" />
+
+    <LinearLayout
+        android:id="@+id/item_bottons"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/title_fragement">
+
+        <cn.edu.cdut.jiemo.personalItemActivity
+            android:id="@+id/headculpture"
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            app:left_text="头像"
+            app:show_left_icon="false"
+            android:layout_weight="1"
+            />
+
+        <cn.edu.cdut.jiemo.personalItemActivity
+            android:id="@+id/userName"
+            app:left_text="昵称"
+            app:show_left_icon="false"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp" />
+
+        <cn.edu.cdut.jiemo.personalItemActivity
+            android:id="@+id/sex"
+            app:left_text="性别"
+            android:layout_weight="1"
+            app:show_left_icon="false"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+        <cn.edu.cdut.jiemo.personalItemActivity
+            android:id="@+id/age"
+            app:left_text="年龄"
+            android:layout_weight="1"
+            app:show_left_icon="false"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+        <cn.edu.cdut.jiemo.personalItemActivity
+            android:id="@+id/personalizedSignature"
+            app:left_text="个性签名"
+            android:layout_weight="1"
+            app:show_left_icon="false"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

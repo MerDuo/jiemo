@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--加号按钮跳转页面-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -22,19 +23,23 @@
             android:layout_marginLeft="10dp">
 
             <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/countdown"></ImageView>
+                android:id="@+id/countImg"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:src="@drawable/countdown"
+                android:onClick="onClick"></ImageView>
 
             <TextView
+                android:id="@+id/countTxt"
                 android:layout_width="100dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="倒计时"
                 android:textColor="#000000"
-
-                android:textSize="20sp"></TextView>
+                android:textSize="10sp"
+                android:onClick="onClick"></TextView>
         </LinearLayout>
 
         <LinearLayout
@@ -44,24 +49,32 @@
             android:layout_marginLeft="10dp">
 
             <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/handcount"></ImageView>
+                android:id="@+id/diaryImg"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/handcount"
+                android:onClick="onClick"
+                android:layout_gravity="center"
+                ></ImageView>
 
             <TextView
+                android:id="@+id/diaryTxt"
                 android:layout_width="100dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="写手账"
                 android:textColor="#000000"
-                android:textSize="20sp"></TextView>
+                android:textSize="10sp"
+                android:onClick="onClick"></TextView>
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:id="@+id/returnimg"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:src="@drawable/close"></ImageView>
+                android:src="@drawable/close"
+                android:onClick="returnimg"></ImageView>
         </LinearLayout>
 
         <LinearLayout
@@ -71,18 +84,23 @@
             android:layout_marginLeft="10dp">
 
             <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/label"></ImageView>
+                android:id="@+id/calImg"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/label"
+                android:layout_gravity="center"
+                android:onClick="onClick"></ImageView>
 
             <TextView
+                android:id="@+id/calTxt"
                 android:layout_width="100dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="写日程"
                 android:textColor="#000000"
-                android:textSize="20sp"></TextView>
+                android:textSize="10sp"
+                android:onClick="onClick"></TextView>
         </LinearLayout>
 
     </LinearLayout>

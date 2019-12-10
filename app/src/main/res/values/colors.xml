@@ -8,4 +8,10 @@
     <color name="colortitle">#D2F5EE</color>
     <color name="textcolor">#666767</color>
     <color name="line">#C9C9C9</color>
+
+    <color name="green">#D2F5EE</color>
+    <color name="login">#666766</color>
+    <color name="register">#00cc99</color>
+    <color name="hui">#C9CBCA</color>
+    <color name="black">#000000</color>
 </resources>

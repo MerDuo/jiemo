@@ -1,30 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="cn.edu.cdut.jiemo">
 
     <application
         android:allowBackup="true"
+        android:fitsSystemWindows="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".personalDocument">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".login"></activity>
+        <activity android:name=".register" />
+        <activity android:name=".schedule.addplan" />
+        <activity android:name=".schedule.editplan" />
+        <activity android:name=".schedule.calender">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".hhhhhhhhhhh" />
-        <activity android:name=".documentEditer">
-
-        </activity>
-        <activity android:name=".securitySetting" />
-        <activity android:name=".accountManage" />
+        <activity android:name=".fragment.Top2View" />
+        <activity android:name=".diary.diaryWrite" />
+        <activity android:name=".mine.mine" />
+        <activity android:name=".mine.personalDocument" />
+        <activity android:name=".mine.documentEditer" />
+        <activity android:name=".mine.securitySetting" />
+        <activity android:name=".mine.accountManage" />
         <activity android:name=".add" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".mine" />
     </application>
 
 </manifest>

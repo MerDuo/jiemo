@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--底部导航栏-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="bottom">
+
+
+    <!--    <com.example.jiemo.Top2View-->
+    <!--        android:id="@+id/top2"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_alignParentTop="true"-->
+    <!--        app:top2_text="测试2"-->
+    <!--        app:top2_color="#778899"/>-->
+
+    <!--        <com.example.jiemo.Top3View-->
+    <!--            android:id="@+id/top3"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_alignParentTop="true"-->
+    <!--            app:top3_text="测试2"-->
+    <!--            app:top3_color="#778899"-->
+    <!--            app:top3_text_r="ceshi2"-->
+    <!--            app:top3_color_r="#778899"/>-->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#fff">
+
+        <cn.edu.cdut.jiemo.diary.imageTextView
+            android:id="@+id/sy"
+            android:background="#fff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="50dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            app:text="大家"
+            app:text_color="#778899"
+            app:text_size="4dp"
+            app:img_src="@drawable/shouye"/>
+
+
+        <cn.edu.cdut.jiemo.diary.imageTextView
+            android:id="@+id/wo"
+            android:background="#fff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="100dp"
+            android:layout_weight="1"
+            app:text="我的"
+            app:text_color="#778899"
+            app:text_size="4sp"
+            app:img_src="@drawable/wo"/>
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/jia"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/jia2"
+        android:onClick="onClick"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

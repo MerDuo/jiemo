@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--个人信息编辑界面-->
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".documentEditer"
-    android:background="@color/white">
-    <fragment
+    tools:context=".mine.documentEditer"
+    >
+<!--    <fragment-->
+<!--        android:id="@+id/title_fragement"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:name="cn.edu.cdut.jiemo.fragment.titleFragment"-->
+<!--        tools:ignore="MissingConstraints" />-->
+    <cn.edu.cdut.jiemo.fragment.Top2View
         android:id="@+id/title_fragement"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:name="cn.edu.cdut.jiemo.titleFragment"
-        tools:ignore="MissingConstraints" />
+        app:top2_text="我的"
+        app:top2_color="#778899"
+        tools:ignore="MissingConstraints"></cn.edu.cdut.jiemo.fragment.Top2View>
     <LinearLayout
         android:orientation="horizontal"
         android:layout_height="wrap_content"

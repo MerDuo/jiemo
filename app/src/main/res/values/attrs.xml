@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable
-        name="personal_item">
+    <declare-styleable name="personal_item">
         <attr name="left_icon" format="string"/>//设置左侧图标
         <attr name="show_left_icon" format="boolean"/>//是否显示左侧图标
         <attr name="left_text" format="string"/>//左侧标题文字
@@ -10,4 +9,25 @@
         <attr name="right_text" format="string"/>//右侧内容文字
         <attr name="text_color" format="string"/>//文字颜色
     </declare-styleable>
+
+
+    <declare-styleable name="imageTextView">
+        <attr name="text" format="string"/>
+        <attr name="text_size" format="dimension"/>
+        <attr name="text_color1" format="color"/>
+        <attr name="img_src" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="Top2View">
+        <attr name="top2_text" format="string"/>
+        <attr name="top2_color" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="Top3View">
+        <attr name="top3_text" format="string"/>
+        <attr name="top3_color" format="color"/>
+        <attr name="top3_text_r" format="string"/>
+        <attr name="top3_color_r" format="color"/>
+    </declare-styleable>
+
 </resources>

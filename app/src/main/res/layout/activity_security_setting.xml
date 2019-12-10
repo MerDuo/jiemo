@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--安全设置界面-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".accountManage"
+    tools:context=".mine.accountManage"
     android:background="#fafafa">
-    <include layout="@layout/top3"></include>
+<!--    <include layout="@layout/top3"></include>-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -40,8 +40,9 @@
             android:paddingLeft="50dp"
             android:layout_gravity="center"
             android:layout_weight="1"
+            android:onClick="onClick"
             app:text="大家"
-            app:text_color="#778899"
+            app:text_color_nav="#778899"
             app:text_size="4dp"
             app:img_src="@drawable/shouye"/>
 
@@ -53,8 +54,9 @@
             android:layout_height="wrap_content"
             android:paddingLeft="100dp"
             android:layout_weight="1"
+            android:onClick="onClick"
             app:text="我的"
-            app:text_color="#778899"
+            app:text_color_nav="#778899"
             app:text_size="4sp"
             app:img_src="@drawable/wo"/>
 

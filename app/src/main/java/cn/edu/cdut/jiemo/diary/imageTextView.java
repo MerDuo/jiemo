@@ -29,7 +29,7 @@ public class imageTextView extends LinearLayout {
         TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.imageTextView);
         tv_text = typedArray.getString(R.styleable.imageTextView_text);
         tv_size = typedArray.getDimension(R.styleable.imageTextView_text_size,0);
-//        tv_color = typedArray.getColor(R.styleable.imageTextView_text_color,0x000000);
+        tv_color = typedArray.getColor(R.styleable.imageTextView_text_color_nav,0x000000);
         img_src = typedArray.getResourceId(R.styleable.imageTextView_img_src,0);
 
         tv.setText(tv_text);

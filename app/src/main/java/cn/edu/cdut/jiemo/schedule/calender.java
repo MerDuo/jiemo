@@ -50,6 +50,7 @@ public class calender extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(calender.this,addplan.class);
+//                Intent intent = new Intent(MainActivity.this,addplan.class);
                 startActivity(intent);
             }
         });

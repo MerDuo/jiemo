@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import cn.edu.cdut.jiemo.R;
+import cn.edu.cdut.jiemo.fragment.calenderFragment;
 import cn.edu.cdut.jiemo.fragment.diaryFragment;
 import cn.edu.cdut.jiemo.fragment.fragment_main;
 
@@ -30,7 +31,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return new fragment_main();
             case 1:
-                return new fragment_main();
+                return new calenderFragment();
             case 2:
                 return new diaryFragment();
 

@@ -11,16 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".login"></activity>
+        <activity android:name=".login">
+
+        </activity>
         <activity android:name=".register" />
         <activity android:name=".schedule.addplan" />
         <activity android:name=".schedule.editplan" />
         <activity android:name=".schedule.calender">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".fragment.Top2View" />
         <activity android:name=".diary.diaryWrite" />
@@ -30,7 +28,13 @@
         <activity android:name=".mine.securitySetting" />
         <activity android:name=".mine.accountManage" />
         <activity android:name=".add" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

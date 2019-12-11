@@ -12,10 +12,13 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 import cn.edu.cdut.jiemo.diary.SectionsPagerAdapter;
 import cn.edu.cdut.jiemo.mine.mine;
+import cn.edu.cdut.jiemo.schedule.addplan;
+import cn.edu.cdut.jiemo.schedule.calender;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener{
 
@@ -27,30 +30,30 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
         setContentView(R.layout.activity_main);
 
 
-        //滚动效果
-        scrollView = (ScrollView) findViewById(R.id.id_scrollView);
-        scrollView.setVerticalScrollBarEnabled(false);
-        scrollView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_UP:
-                        // 判断是否到达顶部
-                        if (scrollView.getScrollY() <= 0) {
-//                            Toast.makeText(MainActivity.this, "到达顶部", Toast.LENGTH_SHORT).show();
-                            break;
-                        }
-                        // 判断是否到达底部
-                        else if (scrollView.getChildAt(0).getMeasuredHeight() <=
-                                scrollView.getHeight() + scrollView.getScrollY()) {
-                            Toast.makeText(MainActivity.this, "到达底部", Toast.LENGTH_SHORT).show();
-                            break;
-                        }
-                        break;
-                }
-                return false;
-            }
-        });
+//        //滚动效果
+//        scrollView = (ScrollView) findViewById(R.id.id_scrollView);
+//        scrollView.setVerticalScrollBarEnabled(false);
+//        scrollView.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                switch (event.getAction()) {
+//                    case MotionEvent.ACTION_UP:
+//                        // 判断是否到达顶部
+//                        if (scrollView.getScrollY() <= 0) {
+////                            Toast.makeText(MainActivity.this, "到达顶部", Toast.LENGTH_SHORT).show();
+//                            break;
+//                        }
+//                        // 判断是否到达底部
+//                        else if (scrollView.getChildAt(0).getMeasuredHeight() <=
+//                                scrollView.getHeight() + scrollView.getScrollY()) {
+//                            Toast.makeText(MainActivity.this, "到达底部", Toast.LENGTH_SHORT).show();
+//                            break;
+//                        }
+//                        break;
+//                }
+//                return false;
+//            }
+//        });
 
 
         // 菜单栏
@@ -59,7 +62,22 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
-        ImageView addDiary = findViewById(R.id.jia);
+
+        // 添加日志点击事件
+        //ImageView addDiary = (ImageView) findViewById(R.id.jia);
+        //addDiary.setOnClickListener(this);
+
+//        // 添加日程
+//        FloatingActionButton fab = findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+////                Intent intent = new Intent(calender.this,addplan.class);
+//                Intent intent = new Intent(MainActivity.this, addplan.class);
+//                startActivity(intent);
+//            }
+//        });
+
 
     }
 
@@ -72,6 +90,16 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this, add.class);
                 startActivity(intent);
+                break;
+            case R.id.wo:
+                Intent intent1 = new Intent();
+                intent1.setClass(MainActivity.this,mine.class);
+                startActivity(intent1);
+                break;
+            case R.id.fab:
+                Intent intent2 = new Intent(MainActivity.this,addplan.class);
+//                Intent intent = new Intent(MainActivity.this, addplan.class);
+                startActivity(intent2);
         }
     }
 

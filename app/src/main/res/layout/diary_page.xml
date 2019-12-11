@@ -53,79 +53,86 @@
                 android:scaleType="centerInside"/>
 
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal">-->
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
-                    android:paddingTop="10dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="5dp">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:paddingTop="10dp"-->
+<!--                    android:paddingLeft="10dp"-->
+<!--                    android:paddingRight="5dp">-->
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/pic2"
-                        android:layout_weight="1"
-                        android:paddingBottom="10dp"
-                        android:adjustViewBounds="true"/>
+<!--                    <ImageView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:src="@drawable/pic2"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:paddingBottom="10dp"-->
+<!--                        android:adjustViewBounds="true"/>-->
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/pic2"
-                        android:layout_weight="1"
-                        android:paddingBottom="10dp"
-                        android:adjustViewBounds="true"/>
+<!--                    <ImageView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:src="@drawable/pic2"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:paddingBottom="10dp"-->
+<!--                        android:adjustViewBounds="true"/>-->
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/pic2"
-                        android:layout_weight="1"
-                        android:paddingBottom="10dp"
-                        android:adjustViewBounds="true"/>
+<!--                    <ImageView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:src="@drawable/pic2"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:paddingBottom="10dp"-->
+<!--                        android:adjustViewBounds="true"/>-->
 
-                </LinearLayout>
+<!--                </LinearLayout>-->
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
-                    android:paddingTop="10dp"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="10dp">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:paddingTop="10dp"-->
+<!--                    android:paddingLeft="5dp"-->
+<!--                    android:paddingRight="10dp">-->
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/pic2"
-                        android:paddingBottom="10dp"
-                        android:adjustViewBounds="true"/>
+<!--                    <ImageView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:src="@drawable/pic2"-->
+<!--                        android:paddingBottom="10dp"-->
+<!--                        android:adjustViewBounds="true"/>-->
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/pic2"
-                        android:paddingBottom="10dp"
-                        android:adjustViewBounds="true"/>
+<!--                    <ImageView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:src="@drawable/pic2"-->
+<!--                        android:paddingBottom="10dp"-->
+<!--                        android:adjustViewBounds="true"/>-->
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/pic2"
-                        android:paddingBottom="10dp"
-                        android:adjustViewBounds="true"/>
+<!--                    <ImageView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:src="@drawable/pic2"-->
+<!--                        android:paddingBottom="10dp"-->
+<!--                        android:adjustViewBounds="true"/>-->
 
-                </LinearLayout>
+<!--                </LinearLayout>-->
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
+
+            <ListView
+                android:id="@android:id/list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:divider="@null" />
 
             <ImageView
                 android:layout_width="match_parent"

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/popmemu_diary_defaultw"
+        android:orderInCategory="100"
+        android:title="简约干净"/>
+    <item android:id="@+id/popmemu_diary_fangge"
+        android:orderInCategory="100"
+        android:title="随心方格"/>
+    <item android:id="@+id/popmemu_diary_rabbit"
+        android:orderInCategory="100"
+        android:title="四只小兔"/>
+    <item android:id="@+id/popmemu_diary_line"
+        android:orderInCategory="100"
+        android:title="淡雅线条"/>
+    <item android:id="@+id/popmemu_diary_flower"
+        android:orderInCategory="100"
+        android:title="可爱小花"/>
+
+</menu>

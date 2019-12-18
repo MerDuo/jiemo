@@ -86,6 +86,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
     public void onClick(View v) {
         int id = v.getId();
         switch (id){
+            case R.id.sy:
+                Intent intent3 = new Intent();
+                intent3.setClass(MainActivity.this,MainActivity.class);
+                startActivity(intent3);
+                break;
             case R.id.jia:
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this, add.class);
@@ -100,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
                 Intent intent2 = new Intent(MainActivity.this,addplan.class);
 //                Intent intent = new Intent(MainActivity.this, addplan.class);
                 startActivity(intent2);
+                break;
         }
     }
 

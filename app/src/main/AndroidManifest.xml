@@ -21,7 +21,8 @@
 
         </activity>
         <activity android:name=".fragment.Top2View" />
-        <activity android:name=".diary.diaryWrite" />
+        <activity android:name=".diary.diaryWrite"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".mine.mine" />
         <activity android:name=".mine.personalDocument" />
         <activity android:name=".mine.documentEditer" />

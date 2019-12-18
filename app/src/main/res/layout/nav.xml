@@ -7,13 +7,13 @@
     android:gravity="bottom">
 
 
-    <!--    <com.example.jiemo.Top2View-->
-    <!--        android:id="@+id/top2"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_alignParentTop="true"-->
-    <!--        app:top2_text="测试2"-->
-    <!--        app:top2_color="#778899"/>-->
+<!--        <com.example.jiemo.Top2View-->
+<!--            android:id="@+id/top2"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            app:top2_text="测试2"-->
+<!--            app:top2_color="#778899"/>-->
 
     <!--        <com.example.jiemo.Top3View-->
     <!--            android:id="@+id/top3"-->

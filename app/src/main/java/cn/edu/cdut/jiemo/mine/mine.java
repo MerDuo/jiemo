@@ -42,6 +42,16 @@ public class mine extends AppCompatActivity {
             }
         });
 
+        //点击关于我们跳转到关于我们界面
+        personalItemActivity aboutUs=findViewById(R.id.call);
+        aboutUs.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mine.this,aboutUs.class);
+                startActivity(intent);
+            }
+        });
+
 
         //记录用户启动程序的次数
         SharedPreferences pref=getSharedPreferences("data",MODE_PRIVATE);

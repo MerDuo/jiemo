@@ -29,6 +29,7 @@ public class Top2View extends RelativeLayout{
         tv.setTextColor(tv_color);
 
         typedArray.recycle();
+
     }
     public void setText(String text){
         tv.setText(text);

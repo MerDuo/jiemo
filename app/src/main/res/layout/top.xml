@@ -14,7 +14,7 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:text="@string/top1"
         android:textColor="#778899"
-        android:textSize="16sp"/>
+        android:textSize="18sp"/>
     <Button
         android:id="@+id/xingcheng"
         android:layout_width="wrap_content"
@@ -23,7 +23,7 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:text="@string/top2"
         android:textColor="#778899"
-        android:textSize="16sp"/>
+        android:textSize="18sp"/>
     <Button
         android:id="@+id/shouzhang"
         android:layout_width="wrap_content"
@@ -32,6 +32,6 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:text="@string/top3"
         android:textColor="#778899"
-        android:textSize="16sp"/>
+        android:textSize="18sp"/>
 
 </LinearLayout>

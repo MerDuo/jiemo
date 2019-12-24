@@ -40,11 +40,14 @@ public class personalItemActivity extends LinearLayout {
         TextView leftTitle=findViewById(R.id.item_text);
         View bottomLine=findViewById(R.id.buttom_line);
         View rightArrow=findViewById(R.id.right_icon);
+        TextView rightText=findViewById(R.id.right_text);
+
         leftIcon.setBackground(ta.getDrawable(R.styleable.personal_item_left_icon));//设置左侧图标
         leftTitle.setText(ta.getString(R.styleable.personal_item_left_text));//设置左侧标题文字
         leftIcon.setVisibility(isShowLeftIcon ? View.VISIBLE : View.INVISIBLE);//设置左侧图标是否显示
         bottomLine.setVisibility(isShowBottomLine ? View.VISIBLE : View.INVISIBLE);//设置底部图标是否显示
         rightArrow.setVisibility(isShowRightArrow ? View.VISIBLE : View.INVISIBLE);//设置右侧箭头图标是否显示
+        rightText.setText(ta.getString(R.styleable.personal_item_right_text));//设置右边文字
 
     }
     //设置左边的图标的大小
@@ -58,6 +61,14 @@ public class personalItemActivity extends LinearLayout {
     public void setRightText(String rightText){
         TextView right_text=findViewById(R.id.right_text);
         right_text.setText(rightText);//设置右侧文字
+    }
+
+    //设置右边图标的的大小
+    public void setRightIconSize(int size){
+        ImageView imageView=findViewById(R.id.right_icon);
+        ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) imageView.getLayoutParams();
+        params.height= dip2px(this.getContext(), size);
+        imageView.setLayoutParams(params);
     }
 
     /**

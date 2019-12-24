@@ -29,6 +29,7 @@
         <activity android:name=".mine.securitySetting" />
         <activity android:name=".mine.accountManage" />
         <activity android:name=".add" />
+        <activity android:name=".mine.aboutUs"/>
         <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

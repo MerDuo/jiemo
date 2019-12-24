@@ -13,6 +13,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import cn.edu.cdut.jiemo.R;
+import cn.edu.cdut.jiemo.fragment.Top2View;
 import cn.edu.cdut.jiemo.fragment.titleFragment;
 
 /**
@@ -40,8 +41,8 @@ public class documentEditer extends AppCompatActivity {
         //设置标题栏内容
         Intent intent=getIntent();
         String title=intent.getStringExtra("titleText");
-        titleFragment titlefragment=(titleFragment)getSupportFragmentManager().findFragmentById(R.id.title_fragement);
-//        titlefragment.setTitle(title);
+        Top2View titlefragment=(Top2View)findViewById(R.id.title_fragement);
+        titlefragment.setText(title);
 
         //获取用户数据
         dataKey=intent.getStringExtra("dataKey");

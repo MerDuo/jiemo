@@ -2,6 +2,7 @@ package cn.edu.cdut.jiemo.mine;
 
 import android.os.Bundle;
 
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -52,6 +53,14 @@ public class aboutUs extends AppCompatActivity {
         weibo.setRightIconSize(0);
         email.setRightIconSize(0);
 
+        // return
+        ImageView return_btn = findViewById(R.id.returnbtn);
+        return_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
     }

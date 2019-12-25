@@ -20,7 +20,7 @@
         <activity android:name=".schedule.calender">
 
         </activity>
-        <activity android:name=".fragment.Top2View" />
+        <activity android:name=".diary.Top2View" />
         <activity android:name=".diary.diaryWrite"
             android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".mine.mine" />

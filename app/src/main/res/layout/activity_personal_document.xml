@@ -15,14 +15,14 @@
 <!--        android:name="cn.edu.cdut.jiemo.fragment.titleFragment"-->
 <!--        tools:ignore="MissingConstraints" />-->
 
-    <cn.edu.cdut.jiemo.fragment.Top2View
+    <cn.edu.cdut.jiemo.diary.Top2View
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints"
         android:id="@+id/title_fragement"
         app:top2_text="个人资料"
         app:top2_color="#778899">
-    </cn.edu.cdut.jiemo.fragment.Top2View>
+    </cn.edu.cdut.jiemo.diary.Top2View>
     <LinearLayout
         android:id="@+id/item_bottons"
         android:layout_width="match_parent"

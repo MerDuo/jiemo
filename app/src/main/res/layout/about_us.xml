@@ -6,14 +6,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     >
 
-    <cn.edu.cdut.jiemo.fragment.Top2View
+    <cn.edu.cdut.jiemo.diary.Top2View
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints"
         android:id="@+id/title_fragement"
         app:top2_text="关于我们"
         app:top2_color="#778899">
-    </cn.edu.cdut.jiemo.fragment.Top2View>
+    </cn.edu.cdut.jiemo.diary.Top2View>
     <cn.edu.cdut.jiemo.mine.circleImageView
         android:id="@+id/appImage"
         android:layout_width="80dp"

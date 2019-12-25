@@ -58,11 +58,12 @@ public class diaryFragment extends Fragment {
     }
 
     public void initData() {
-        timelineList.add(new TimeLineBean("2019-12-05", R.drawable.pic1, "test"));
-        timelineList.add(new TimeLineBean("2019-12-01", R.drawable.pic2, "this is a text"));
-        timelineList.add(new TimeLineBean("2019-11-25", R.drawable.pic3, "this is a text could be wrong"));
-        timelineList.add(new TimeLineBean("2019-11-15", R.drawable.pic4, "this is a diary"));
-        timelineList.add(new TimeLineBean("2019-11-05", R.drawable.pic1, "this is a text which may bo too long to show and if it's showed it will be great !"));
+//        timelineList.add(new TimeLineBean("2019-12-05", R.drawable.pic1, "test","diary"));
+        timelineList.add(new TimeLineBean(1,"2019-12-05", "个人日志","diary"));
+        timelineList.add(new TimeLineBean(2,"2019-12-01", "小记事","memo"));
+        timelineList.add(new TimeLineBean(3,"2019-11-25", "一些感想","essay"));
+        timelineList.add(new TimeLineBean(4,"2019-11-15", "杂七杂八的东西","others"));
+        timelineList.add(new TimeLineBean(5,"2019-11-05", "不知道是什么","diary"));
     }
 
     public void setListViewHeight(ListView listview){

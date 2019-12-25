@@ -52,6 +52,11 @@
                 android:src="@drawable/line_text"
                 android:scaleType="centerInside"/>
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:src="@drawable/blank"/>
+
 
 <!--            <LinearLayout-->
 <!--                android:layout_width="wrap_content"-->

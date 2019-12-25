@@ -13,8 +13,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import cn.edu.cdut.jiemo.R;
-import cn.edu.cdut.jiemo.fragment.Top2View;
-import cn.edu.cdut.jiemo.fragment.titleFragment;
+import cn.edu.cdut.jiemo.diary.Top2View;
 
 /**
  * Created by aaa on 2019/12/3.

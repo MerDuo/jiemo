@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class sqLite extends SQLiteOpenHelper {
-    private static final String db_name = "MySchedule";//自定义的数据库名；
+    private static final String db_name = "MyDatabase.db";//自定义的数据库名；
     private static final int version = 1;//版本号
 
     public sqLite(Context context) {
@@ -16,14 +16,46 @@ public class sqLite extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String  sql ="create table schedules(" +
+
+        //开启外键约束
+        super.onOpen(sqLiteDatabase);
+        if(sqLiteDatabase.isReadOnly()){
+            sqLiteDatabase.execSQL("PRAGMA foreign_keys=ON");
+        }
+
+        //创建个人信息表
+        String sql1="CREATE TABLE users(uid integer primary key autoincrement,"+
+                "account text not null,"+
+                "password text not null," +
+                "avatar blob,"+
+                "name text,"+
+                "sex text,"+
+                "age integer,"+
+                "signature text)";
+        sqLiteDatabase.execSQL(sql1);
+
+        //创建手账表
+        String sql2="CREATE TABLE diary(did integer primary key autoincrement,"+
+                "title text not null,"+
+                "diarytext text not null," +
+                "font text,"+
+                "fontsize integer,"+
+                "diarytime text,"+
+                "diarycatagory text,"+
+                "uid integer,"+
+                "foreign key(uid) references users(uid) on delete cascade on update cascade)";
+        sqLiteDatabase.execSQL(sql2);
+
+        //创建行程表
+        String  sql3 ="create table schedules(" +
                 "id Integer primary key autoincrement," +     //id自增,只支持integer不支持int
                 "checkd varchar(10)," +
                 "schedule varchar(50)," +
                 "day varchar(30)," +
-                "time varchar(30)"+
-                ")";
-        sqLiteDatabase.execSQL(sql);
+                "time varchar(30),"+
+                "uid integer,"+
+                "foreign key(uid) references users(uid) on delete cascade on update cascade)";
+        sqLiteDatabase.execSQL(sql3);
     }
 
     @Override

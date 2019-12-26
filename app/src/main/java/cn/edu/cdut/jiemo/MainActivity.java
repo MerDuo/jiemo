@@ -5,10 +5,13 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
@@ -55,19 +58,51 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 //            }
 //        });
 
-
         // 菜单栏
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this,getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
+
+        // 跳转指定viewpager
+        Intent intent = getIntent();
+        int page = intent.getIntExtra("page",0);
+//        sectionsPagerAdapter.getItem(page);
+        viewPager.setCurrentItem(page);
+
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
+
+        //
+//        PopupMenu popupMenu = new PopupMenu(this,v);
+//        popupMenu.setOnMenuItemClickListener(this);
+//        popupMenu.inflate(R.menu.menu_diary);
+//        popupMenu.show();
+
+//        public boolean onCreateOptionsMenu(Menu menu) {
+//            // Inflate the menu; this adds items to the action bar if it is present.
+//            getMenuInflater().inflate(R.menu.menu_main, menu);
+//            return true;
+//        }
+//
+//        public boolean onOptionsItemSelected(MenuItem item) {
+//            // Handle action bar item clicks here. The action bar will
+//            // automatically handle clicks on the Home/Up button, so long
+//            // as you specify a parent activity in AndroidManifest.xml.
+//            int id = item.getItemId();
+//
+//            //noinspection SimplifiableIfStatement
+//            if (id == R.id.action_settings) {
+//                return true;
+//            }
+//
+//            return super.onOptionsItemSelected(item);
+//        }
 
         // 添加日志点击事件
         //ImageView addDiary = (ImageView) findViewById(R.id.jia);
         //addDiary.setOnClickListener(this);
 
-//        // 添加日程
+        // 添加日程
 //        FloatingActionButton fab = findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override

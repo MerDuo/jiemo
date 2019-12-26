@@ -8,8 +8,10 @@ import android.app.TimePickerDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -25,6 +27,7 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import cn.edu.cdut.jiemo.MainActivity;
 import cn.edu.cdut.jiemo.R;
 
 public class editplan extends AppCompatActivity {
@@ -39,6 +42,8 @@ public class editplan extends AppCompatActivity {
     private TextView time;//显示时间
     private Button addbtn;
     private int id;
+    private sqLite mySQLiteOpenHelper;
+    private SQLiteDatabase myDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,31 +54,43 @@ public class editplan extends AppCompatActivity {
         addPlan();
     }
     public void init(){
-        context = this;
-        title = findViewById(R.id.title);
-        back = findViewById(R.id.returnbtn);
-        check = findViewById(R.id.switchday);
-        swiday = findViewById(R.id.stwday);
-        switime = findViewById(R.id.stwtime);
-        mday = findViewById(R.id.text1);
-        time = findViewById(R.id.text2);
-        addbtn =findViewById(R.id.add);
+        //context = this;
+        title = findViewById(R.id.edititle);
+        //back = findViewById(R.id.returnbtn);
+        check = findViewById(R.id.ediswitchday);
+        swiday = findViewById(R.id.edistwday);
+        switime = findViewById(R.id.edistwtime);
+        mday = findViewById(R.id.editext1);
+        time = findViewById(R.id.editext2);
+        addbtn =findViewById(R.id.ediadd);
 
-        back.setOnClickListener(new View.OnClickListener() {
+        mySQLiteOpenHelper = new sqLite(this);
+        myDatabase = mySQLiteOpenHelper.getWritableDatabase();
+        ImageView return_btn = findViewById(R.id.returnbtn);
+        return_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //返回键
-                editplan.this.finish();
+                finish();
             }
         });
-        Bundle receive = this.getIntent().getExtras();
+//        back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //返回键
+//                editplan.this.finish();
+//            }
+//        });
+//        Bundle receive = this.getIntent().getExtras();
+        Bundle receive = getIntent().getExtras();
 
         if(receive != null) {
             String sche = receive.getString("oplan");
             String t = receive.getString("oday");
             String time2 = receive.getString("otime");
             String ocheck = receive.getString("ocheck");
+            Log.e("time",time2);
             id =  receive.getInt("dbid");
+            Log.e("数据：","id");
             time.setText(time2);
             mday.setText(t);//月份的展示
             title.setText(sche);
@@ -121,18 +138,21 @@ public class editplan extends AppCompatActivity {
 //                Log.i("标题：",text);
 //                Log.i("shijian：",t);
                 if(!TextUtils.isEmpty(text) && !TextUtils.isEmpty(t) && !TextUtils.isEmpty(ti)) {
-//                    scheduleBean scheduleBean = new scheduleBean();
-////                    scheduleBean.plan = text;
-////                    scheduleBean.check = "false";
-////                    scheduleBean.time = ti;
-////                    scheduleBean.day = t;
-////                    mySQLiteOpenHelper.insert(scheduleBean);
-                    Intent intent = new Intent(editplan.this, calender.class);
-                    intent.putExtra("sche",title.getText().toString());
-                    intent.putExtra("day",t);
-                    intent.putExtra("time",ti);
-                    intent.putExtra("check",checkStr);
-                    intent.putExtra("id",id);
+                    scheduleBean scheduleBean = new scheduleBean();
+
+                    scheduleBean.plan = text;
+                    scheduleBean.check = "false";
+                    scheduleBean.time = ti;
+                    scheduleBean.day = t;
+                    mySQLiteOpenHelper.update(id,scheduleBean);
+                    //-----------在main中添加--------------------
+                    //Intent intent = new Intent(editplan.this, MainActivity.class);
+//                    intent.putExtra("sche",title.getText().toString());
+//                    intent.putExtra("day",t);
+//                    intent.putExtra("time",ti);
+//                    intent.putExtra("check",checkStr);
+//                    intent.putExtra("id",id);
+                    //---------------------------------------------
 //                    Bundle bundle = new Bundle();
 //                    bundle.putString("scheduleDetail", title.getText().toString());
 //                    bundle.putString("day", t);
@@ -140,7 +160,7 @@ public class editplan extends AppCompatActivity {
 //
 //
 //                    intent.putExtras(bundle);
-                    startActivity(intent);
+                    //startActivity(intent);
                 }
                 else{
                     Toast.makeText(context, "还未添加内容", Toast.LENGTH_SHORT).show();
@@ -157,7 +177,7 @@ public class editplan extends AppCompatActivity {
             public void onClick(View view) {
                 final Calendar mcalendar = Calendar.getInstance();
                 int year = mcalendar.get(Calendar.YEAR);
-                final int month = mcalendar.get(Calendar.MONTH) + 1;
+                final int month = mcalendar.get(Calendar.MONTH);
                 final int day = mcalendar.get(Calendar.DATE);
                 mday.setText(year+"-"+month+"-"+day);
                 //mday.setText("选择时间：" + year + "年" + month + "月" + day + "日");

@@ -54,13 +54,13 @@ public class aboutUs extends AppCompatActivity {
         email.setRightIconSize(0);
 
         // return
-        ImageView return_btn = findViewById(R.id.returnbtn);
-        return_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+//        ImageView return_btn = findViewById(R.id.returnbtn);
+//        return_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
 
 
     }

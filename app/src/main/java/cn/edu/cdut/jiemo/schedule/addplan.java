@@ -25,6 +25,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import cn.edu.cdut.jiemo.MainActivity;
 import cn.edu.cdut.jiemo.R;
 
 public class addplan extends AppCompatActivity {
@@ -106,21 +107,24 @@ public class addplan extends AppCompatActivity {
 //                Log.i("标题：",text);
 //                Log.i("shijian：",t);
                 if(!TextUtils.isEmpty(text) && !TextUtils.isEmpty(t) && !TextUtils.isEmpty(ti)) {
-//                    scheduleBean scheduleBean = new scheduleBean();
-////                    scheduleBean.plan = text;
-////                    scheduleBean.check = "false";
-////                    scheduleBean.time = ti;
-////                    scheduleBean.day = t;
-////                    mySQLiteOpenHelper.insert(scheduleBean);
-                    Intent intent = new Intent(addplan.this, calender.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("scheduleDetail", title.getText().toString());
-                    bundle.putString("day", t);
-                    bundle.putString("time",ti);
-                    bundle.putInt("switchday",switchday);
-
-                    intent.putExtras(bundle);
+                    scheduleBean scheduleBean = new scheduleBean();
+                    scheduleBean.plan = text;
+                    scheduleBean.check = "false";
+                    scheduleBean.time = ti;
+                    scheduleBean.day = t;
+                    mySQLiteOpenHelper.insert(scheduleBean);
+                    //-------------------在main中添加---------------
+                    Intent intent = new Intent(addplan.this, MainActivity.class);
+//                    Bundle bundle = new Bundle();
+//                    bundle.putString("scheduleDetail", title.getText().toString());
+//                    bundle.putString("day", t);
+//                    bundle.putString("time",ti);
+//                    bundle.putInt("switchday",switchday);
+//
+//                    intent.putExtras(bundle);
+                    intent.putExtra("page",1);
                     startActivity(intent);
+                    //-------------------------------------------------
                 }
                 else{
                     Toast.makeText(context, "还未添加内容", Toast.LENGTH_SHORT).show();
@@ -137,7 +141,7 @@ public class addplan extends AppCompatActivity {
             public void onClick(View view) {
                 final Calendar mcalendar = Calendar.getInstance();
                 int year = mcalendar.get(Calendar.YEAR);
-                final int month = mcalendar.get(Calendar.MONTH) + 1;
+                final int month = mcalendar.get(Calendar.MONTH);
                 final int day = mcalendar.get(Calendar.DATE);
                 mday.setText(year+"-"+month+"-"+day);
                 //mday.setText("选择时间：" + year + "年" + month + "月" + day + "日");

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:background="#ffffff">
@@ -10,32 +11,37 @@
            android:layout_height="wrap_content"
            tools:layout="@layout/top2view"
            />-->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:orientation="horizontal"
-        android:background="#D2F5EE">
-        <TextView
-            android:id="@+id/top2_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="修改日程"
-            android:textSize="16sp"
-            android:textColor="#778899"
-            android:textStyle="bold" />
+    <cn.edu.cdut.jiemo.diary.Top2View
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:top2_text="修改"
+        app:top2_color="#778899"/>
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="48dp"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:background="#D2F5EE">-->
+<!--        <TextView-->
+<!--            android:id="@+id/top2_text"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:text="修改日程"-->
+<!--            android:textSize="16sp"-->
+<!--            android:textColor="#778899"-->
+<!--            android:textStyle="bold" />-->
 
 
-        <ImageView
-            android:id="@+id/edireturnbtn"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@drawable/left"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_centerInParent="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"/>
-    </RelativeLayout>
+<!--        <ImageView-->
+<!--            android:id="@+id/edireturnbtn"-->
+<!--            android:layout_width="45dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:src="@drawable/left"-->
+<!--            style="@style/Widget.AppCompat.Button.Borderless"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:layout_alignParentLeft="true"-->
+<!--            android:layout_alignParentTop="true"/>-->
+<!--    </RelativeLayout>-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

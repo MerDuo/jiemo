@@ -10,7 +10,7 @@ import android.util.Log;
 public class sqLite extends SQLiteOpenHelper {
     private static final String db_name = "MyDatabase.db";//自定义的数据库名；
     private static final int version = 1;//版本号
-
+    SQLiteDatabase database = getWritableDatabase();
     public sqLite(Context context) {
         super(context, db_name, null, version);
     }
@@ -63,7 +63,7 @@ public class sqLite extends SQLiteOpenHelper {
 
     }
     public void insert(scheduleBean scheduleBean){
-        SQLiteDatabase database = getWritableDatabase();
+        //SQLiteDatabase database = getWritableDatabase();
         ContentValues cv = new ContentValues();//键值对的集合
         cv.put("checkd" ,scheduleBean.check);
         cv.put("schedule",scheduleBean.plan);
@@ -73,21 +73,21 @@ public class sqLite extends SQLiteOpenHelper {
         Log.i("成功插入数据","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     }
     public Cursor getAll(){
-        SQLiteDatabase database = getWritableDatabase();
+        //SQLiteDatabase database = getWritableDatabase();
         return database.query("schedules",null,null,null,null,null,null);
     }
     public Cursor getOneday(String day){
-        SQLiteDatabase database = getWritableDatabase();
+        //SQLiteDatabase database = getWritableDatabase();
         Log.i("查询某天日程","bbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
         return database.query("schedules",null,"day=?",new String[]{day},null,null,null);
 
     }
     public void deleteAll(){
-        SQLiteDatabase database = getWritableDatabase();
+        //SQLiteDatabase database = getWritableDatabase();
         database.delete("schedules",null,null);
     }
     public void update(int i,scheduleBean scheduleBean){
-        SQLiteDatabase database = getWritableDatabase();
+        //SQLiteDatabase database = getWritableDatabase();
         ContentValues cv = new ContentValues();//键值对的集合
         cv.put("checkd" ,scheduleBean.check);
         cv.put("schedule",scheduleBean.plan);
@@ -97,6 +97,9 @@ public class sqLite extends SQLiteOpenHelper {
         do {
             ret = database.update("schedules",cv,"id=?",new String[]{ String.valueOf(i)});
         }while (ret<0);
-        Log.i("更新数据：","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        Log.i("更新数据：",scheduleBean.plan+i);
+    }
+    public long deleteSchedele(int i){
+        return database.delete("schedules","id="+i,null);
     }
 }

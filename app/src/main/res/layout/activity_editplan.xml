@@ -172,5 +172,18 @@
         android:layout_marginTop="40dp"
 
         />
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="删除该日程"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
 
+        />
 </LinearLayout>

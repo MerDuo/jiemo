@@ -199,7 +199,10 @@ public class calenderFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 int select;
                 cursor.moveToPosition(i);
-                select = cursor.getInt(1);
+                select = cursor.getInt(0);
+
+                System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+select);
+
                 String oplan = msBeanList.get(i).plan;
                 String oday = msBeanList.get(i).day;
                 String ocheck = msBeanList.get(i).check;

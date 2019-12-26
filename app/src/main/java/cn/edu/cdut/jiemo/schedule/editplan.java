@@ -7,6 +7,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -44,6 +45,7 @@ public class editplan extends AppCompatActivity {
     private int id;
     private sqLite mySQLiteOpenHelper;
     private SQLiteDatabase myDatabase;
+    private Button delete;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +65,7 @@ public class editplan extends AppCompatActivity {
         mday = findViewById(R.id.editext1);
         time = findViewById(R.id.editext2);
         addbtn =findViewById(R.id.ediadd);
-
+        delete = findViewById(R.id.delete);
         mySQLiteOpenHelper = new sqLite(this);
         myDatabase = mySQLiteOpenHelper.getWritableDatabase();
         ImageView return_btn = findViewById(R.id.returnbtn);
@@ -124,6 +126,29 @@ public class editplan extends AppCompatActivity {
 
             }
         });
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog alert = new AlertDialog.Builder(editplan.this).create();
+                alert.setMessage("确认删除该日程吗？");
+                alert.setButton(DialogInterface.BUTTON_NEGATIVE, "取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                alert.setButton(DialogInterface.BUTTON_POSITIVE, "确认", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        mySQLiteOpenHelper.deleteSchedele(id);
+                        Intent intent = new Intent(editplan.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                });
+
+                alert.show();
+            }
+        });
     }
     public void addPlan(){
         addbtn.setOnClickListener(new View.OnClickListener() {
@@ -146,7 +171,7 @@ public class editplan extends AppCompatActivity {
                     scheduleBean.day = t;
                     mySQLiteOpenHelper.update(id,scheduleBean);
                     //-----------在main中添加--------------------
-                    //Intent intent = new Intent(editplan.this, MainActivity.class);
+                    Intent intent = new Intent(editplan.this, MainActivity.class);
 //                    intent.putExtra("sche",title.getText().toString());
 //                    intent.putExtra("day",t);
 //                    intent.putExtra("time",ti);
@@ -160,10 +185,10 @@ public class editplan extends AppCompatActivity {
 //
 //
 //                    intent.putExtras(bundle);
-                    //startActivity(intent);
+                    startActivity(intent);
                 }
                 else{
-                    Toast.makeText(context, "还未添加内容", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(editplan.this, "还未添加内容", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.zhy.changeskin.SkinManager;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +31,10 @@ public class aboutUs extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //注册换肤功能
+        SkinManager.getInstance().register(this);
+
         setContentView(R.layout.about_us);
 
         //去掉系统自带的标题栏
@@ -65,4 +71,10 @@ public class aboutUs extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //换肤功能注销
+        SkinManager.getInstance().unregister(this);
+    }
 }

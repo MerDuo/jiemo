@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".mine.personalDocument"
-    android:background="@color/white">
+    android:background="@drawable/sk_bg"
+    android:tag="skin:sk_bg:background">
 
 <!--    <fragment-->
 <!--        android:id="@+id/title_fragement"-->

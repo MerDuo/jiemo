@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.zhy.changeskin.SkinManager;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +30,8 @@ public class documentEditer extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //注册换肤功能
+        SkinManager.getInstance().register(this);
         setContentView(R.layout.activity_document_editer);
 
         //去掉系统自带的标题栏
@@ -69,5 +73,11 @@ public class documentEditer extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //换肤功能注销
+        SkinManager.getInstance().unregister(this);
     }
 }

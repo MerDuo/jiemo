@@ -4,6 +4,7 @@
     package="cn.edu.cdut.jiemo">
 
     <application
+        android:name=".myApplication.myApplication"
         android:allowBackup="true"
         android:fitsSystemWindows="true"
         android:icon="@mipmap/ic_launcher"
@@ -28,6 +29,7 @@
         <activity android:name=".mine.documentEditer" />
         <activity android:name=".mine.securitySetting" />
         <activity android:name=".mine.accountManage" />
+        <activity android:name=".mine.changeTheme"/>
         <activity android:name=".add" />
         <activity android:name=".mine.aboutUs"/>
         <activity android:name=".MainActivity" >
@@ -37,6 +39,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

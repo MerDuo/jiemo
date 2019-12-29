@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.zhy.changeskin.SkinManager;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,6 +21,10 @@ public class mine extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         Log.d("mine1", "onCreate: ");
         super.onCreate(savedInstanceState);
+
+        //注册换肤功能
+        SkinManager.getInstance().register(this);
+
         setContentView(R.layout.activity_mine);
 
         //去掉系统自带的标题栏
@@ -52,6 +58,15 @@ public class mine extends AppCompatActivity {
             }
         });
 
+        //点击更改主题跳转到更改主题界面
+        personalItemActivity changeTheme=findViewById(R.id.theme);
+        changeTheme.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mine.this,changeTheme.class);
+                startActivity(intent);
+            }
+        });
 
         //记录用户启动程序的次数
         SharedPreferences pref=getSharedPreferences("data",MODE_PRIVATE);
@@ -90,5 +105,12 @@ public class mine extends AppCompatActivity {
         String name=pref.getString("name","");
         TextView userName=findViewById(R.id.userName);
         userName.setText(name);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //换肤功能注销
+        SkinManager.getInstance().unregister(this);
     }
 }

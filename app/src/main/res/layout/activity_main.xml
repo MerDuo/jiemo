@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="@drawable/sk_bg"
+    android:tag="skin:sk_bg:background"
     android:orientation="vertical">
 <!--    <include layout="@layout/top" />-->
 <!--    <ScrollView-->
@@ -25,7 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabTextColor="#778899"
-            android:background="#D2F5EE"/>
+            android:background="@drawable/sk_tbg"
+            android:tag="skin:sk_tbg:background"/>
 <!--            android:fitsSystemWindows="true"/> api19以上结合styles-->
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"

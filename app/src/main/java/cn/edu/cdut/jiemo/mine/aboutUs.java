@@ -2,8 +2,11 @@ package cn.edu.cdut.jiemo.mine;
 
 import android.os.Bundle;
 
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.zhy.changeskin.SkinManager;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -28,6 +31,10 @@ public class aboutUs extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //注册换肤功能
+        SkinManager.getInstance().register(this);
+
         setContentView(R.layout.about_us);
 
         //去掉系统自带的标题栏
@@ -52,8 +59,22 @@ public class aboutUs extends AppCompatActivity {
         weibo.setRightIconSize(0);
         email.setRightIconSize(0);
 
+        // return
+//        ImageView return_btn = findViewById(R.id.returnbtn);
+//        return_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
 
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //换肤功能注销
+        SkinManager.getInstance().unregister(this);
+    }
 }

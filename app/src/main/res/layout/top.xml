@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="48dp"
     android:orientation="horizontal"
-    android:background="#D2F5EE">
+    android:background="@drawable/sk_tbg"
+    android:tag="skin:sk_tbg:background">
 
     <Button
         android:id="@+id/first"

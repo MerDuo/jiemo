@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
+import com.zhy.changeskin.SkinManager;
 
 import cn.edu.cdut.jiemo.diary.SectionsPagerAdapter;
 import cn.edu.cdut.jiemo.mine.mine;
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //注册换肤功能
+        SkinManager.getInstance().register(this);
         setContentView(R.layout.activity_main);
 
 
@@ -142,6 +145,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
                 startActivity(intent2);
                 break;
         }
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //换肤功能注销
+        SkinManager.getInstance().unregister(this);
     }
 
 }

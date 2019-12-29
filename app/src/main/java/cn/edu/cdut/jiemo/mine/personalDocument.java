@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
+import com.zhy.changeskin.SkinManager;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +22,9 @@ public class personalDocument extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //注册换肤功能
+        SkinManager.getInstance().register(this);
+
         setContentView(R.layout.activity_personal_document);
 
         //去掉系统自带的标题栏
@@ -126,5 +131,11 @@ public class personalDocument extends AppCompatActivity {
         sex.setRightText(sexinf);
         age.setRightText(ageinf);
         personalizedSignature.setRightText(words);
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //换肤功能注销
+        SkinManager.getInstance().unregister(this);
     }
 }

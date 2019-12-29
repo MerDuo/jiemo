@@ -6,14 +6,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
-    <cn.edu.cdut.jiemo.fragment.Top2View
+    <cn.edu.cdut.jiemo.diary.Top2View
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints"
         android:id="@+id/title_fragement"
         app:top2_text="主题风格"
         app:top2_color="#778899">
-    </cn.edu.cdut.jiemo.fragment.Top2View>
+    </cn.edu.cdut.jiemo.diary.Top2View>
     <ScrollView android:layout_height="wrap_content"
         android:layout_width="match_parent"
         xmlns:android="http://schemas.android.com/apk/res/android"

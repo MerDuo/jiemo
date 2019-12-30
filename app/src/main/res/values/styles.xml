@@ -1,16 +1,22 @@
 <resources>
 
+
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!--取消app启动时的白屏-->
+        <item name="colorAccent">@color/c_accent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="text" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="colorAccent">@color/colorAccent</item>
 <!--        <item name="android:windowTranslucentStatus">true</item> API19以上时-->
     </style>
 
@@ -22,7 +28,31 @@
         <item name="android:textSize">@dimen/text_16sp</item>
     </style>
 
-<!--    <style name="notitle">-->
-<!--        <item name="android:windowNoTitle">true</item>-->
-<!--    </style>-->
+    <!--主题更换中的colorAccount设置-->
+    <!--<style name="sbg" >-->
+        <!--<item name="colorAccent">@color/c_accent</item>-->
+    <!--</style>-->
+    <!--<style name="sbg_2">-->
+        <!--<item name="colorAccent">@color/c2_tilte</item>-->
+    <!--</style>-->
+    <!--<style name="sbg_3">-->
+        <!--<item name="colorAccent">@color/c3_title</item>-->
+    <!--</style>-->
+    <!--<style name="sbg_4">-->
+        <!--<item name="colorAccent">@color/c4_title</item>-->
+    <!--</style>-->
+
+
+    <!--<style name="sbg" parent="Widget.AppCompat.Button.Borderless">-->
+        <!--<item name="colorAccent">#000</item>-->
+    <!--</style>-->
+    <!--<style name="sbg_2" parent="Widget.AppCompat.Button.Borderless">-->
+        <!--<item name="colorAccent">#fff</item>-->
+    <!--</style>-->
+    <!--<style name="sbg_3" parent="Widget.AppCompat.Button.Borderless">-->
+        <!--<item name="colorAccent">#009921</item>-->
+    <!--</style>-->
+    <!--<style name="sbg_4" parent="Widget.AppCompat.Button.Borderless">-->
+        <!--<item name="colorAccent">#098763</item>-->
+    <!--</style>-->
 </resources>

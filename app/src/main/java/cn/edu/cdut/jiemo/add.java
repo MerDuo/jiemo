@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.zhy.changeskin.SkinManager;
+
 import cn.edu.cdut.jiemo.diary.diaryWrite;
 
 public class add extends AppCompatActivity {
@@ -15,6 +17,8 @@ public class add extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //注册换肤功能
+        SkinManager.getInstance().register(this);
         setContentView(R.layout.activity_add);
     }
 
@@ -36,5 +40,11 @@ public class add extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setClass(add.this, MainActivity.class);
         startActivity(intent);
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //换肤功能注销
+        SkinManager.getInstance().unregister(this);
     }
 }

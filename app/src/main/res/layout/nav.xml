@@ -65,10 +65,12 @@
 
     <ImageView
         android:id="@+id/jia"
-        android:layout_width="70dp"
+        android:layout_width="60dp"
         android:layout_height="70dp"
         android:src="@drawable/jia2"
+        android:tag="skin:jia2:src"
         android:onClick="onClick"
+        android:paddingBottom="10dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"/>
 

@@ -23,6 +23,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.zhy.changeskin.SkinManager;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -55,6 +56,7 @@ public class calenderFragment extends Fragment {
         super.onCreate(savedInstanceState);
 //        Toolbar toolbar = findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
+
         View calendarView = inflater.inflate(R.layout.activity_calender,null,false);
         FloatingActionButton fab = calendarView.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -242,5 +244,12 @@ public class calenderFragment extends Fragment {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        //换肤功能注销
+        SkinManager.getInstance().unregister(this.getActivity());
     }
 }

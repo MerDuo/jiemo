@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--顶部导航栏-->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="48dp"
@@ -14,7 +15,8 @@
         android:layout_weight="2"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:text="@string/top1"
-        android:textColor="#778899"
+        android:textColor="@color/c_text"
+        android:tag="skin:c_text:textColor"
         android:textSize="18sp"/>
     <Button
         android:id="@+id/xingcheng"
@@ -23,7 +25,8 @@
         android:layout_weight="2"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:text="@string/top2"
-        android:textColor="#778899"
+        android:textColor="@color/c_text"
+        android:tag="skin:c_text:textColor"
         android:textSize="18sp"/>
     <Button
         android:id="@+id/shouzhang"
@@ -32,7 +35,8 @@
         android:layout_weight="2"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:text="@string/top3"
-        android:textColor="#778899"
+        android:textColor="@color/c_text"
+        android:tag="skin:c_text:textColor"
         android:textSize="18sp"/>
 
 </LinearLayout>

@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +20,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.zhy.changeskin.SkinManager;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -28,7 +30,6 @@ import cn.edu.cdut.jiemo.MainActivity;
 import cn.edu.cdut.jiemo.R;
 
 public class calender extends AppCompatActivity {
-
     CalendarView calendar;
     private Context context;
     private sqLite mySQLiteOpenHelper;
@@ -40,7 +41,11 @@ public class calender extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+//        //注册主题换肤
+//        SkinManager.getInstance().register(this);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        Log.d("aaa","calenderOncreate");
         setContentView(R.layout.activity_calender);
 //        Toolbar toolbar = findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
@@ -206,6 +211,13 @@ public class calender extends AppCompatActivity {
             }
         });
     }
+
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        //换肤功能注销
+//        SkinManager.getInstance().unregister(this);
+//    }
 
 
 //    @Override

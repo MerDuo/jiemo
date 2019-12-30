@@ -3,6 +3,7 @@
     <color name="colorPrimary">#D2F5EE</color>
     <color name="colorPrimaryDark">#D2F5EE</color>
     <color name="colorAccent">#D81B60</color>
+    <!--<color name="colorAccent">#000</color>-->
     <!--title的颜色-->
     <color name="white">#ffffff</color>
     <color name="colortitle">#D2F5EE</color>
@@ -14,4 +15,26 @@
     <color name="register">#00cc99</color>
     <color name="hui">#C9CBCA</color>
     <color name="black">#000000</color>
+
+    <color name="c_accent">#F7E0B7</color>
+    <!--换肤的颜色-->
+
+    <!--默认主题色-->
+    <color name="c_tilte">#D2F5EE</color>
+    <color name="c_bg">#ffffff</color>
+    <color name="c_text">#6B6B6B</color>
+
+    <color name="c2_tilte">#B1DFFE</color>
+    <color name="c2_bg">#fff</color>
+    <color name="c_text_2">#778899</color>
+
+    <color name="c3_title">#CECEFF</color>
+    <color name="c3_bg">#fff</color>
+    <color name="c_text_3">#778899</color>
+
+
+    <color name="c4_title">#FFCACA</color>
+    <color name="c4_bg">#F3F3F3</color>
+    <color name="c_text_4">#778899</color>
+
 </resources>

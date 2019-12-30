@@ -13,9 +13,10 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="@string/mine"
-        android:textSize="18sp"
-        android:textColor="#778899"
-        android:textStyle="bold" />
+        android:textSize="17sp"
+        android:textColor="@color/c_text"
+        android:tag="skin:c_text:textColor"
+         />
 
 
     <ImageView

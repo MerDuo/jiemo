@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-
+import cn.edu.cdut.jiemo.userBean.userBean;
 public class sqLite extends SQLiteOpenHelper {
     private static final String db_name = "MyDatabase.db";//自定义的数据库名；
     private static final int version = 1;//版本号
@@ -101,5 +101,35 @@ public class sqLite extends SQLiteOpenHelper {
     }
     public long deleteSchedele(int i){
         return database.delete("schedules","id="+i,null);
+    }
+    public Boolean addUser(userBean user){//注册
+        if(!hasUser(user.userName)) {
+            ContentValues cv = new ContentValues();//键值对的集合
+            cv.put("account", user.userName);
+            cv.put("password", user.password);
+            database.insert("users", null, cv);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public Boolean hasUser(String name){//判断是否有该用户名
+        Cursor cursor = database.query("users",null,"account=?",new String[]{name},null,null,null);
+        if (cursor.getCount()>0){
+            cursor.close();
+            return  true;
+        }
+        cursor.close();
+        return false;
+    }
+    public Boolean login(String name,String password){
+        String sql = "select * from users where account=? and password=?";
+        Cursor cursor = database.rawQuery(sql, new String[] {name, password});
+        if (cursor.moveToFirst()) {
+            cursor.close();
+            return true;
+        }
+        return false;
     }
 }

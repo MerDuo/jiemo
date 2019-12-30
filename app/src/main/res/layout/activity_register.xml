@@ -73,7 +73,10 @@
             android:gravity="center"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-            android:textColor="@color/hui"></EditText>
+            android:textColor="@color/hui"
+            android:inputType="textPassword">
+
+        </EditText>
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -95,9 +98,11 @@
             android:gravity="center"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-            android:textColor="@color/hui"></EditText>
+            android:textColor="@color/hui"
+            android:inputType="textPassword"></EditText>
     </RelativeLayout>
     <Button
+        android:id="@+id/regisbtn"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:text="注册"

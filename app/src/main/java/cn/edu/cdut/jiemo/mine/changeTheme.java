@@ -43,19 +43,19 @@ public class changeTheme extends AppCompatActivity {
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SkinManager.getInstance().changeSkin("white");
+                SkinManager.getInstance().changeSkin("4");
             }
         });
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SkinManager.getInstance().changeSkin("purple");
+                SkinManager.getInstance().changeSkin("3");
             }
         });
         b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SkinManager.getInstance().changeSkin("blue");
+                SkinManager.getInstance().changeSkin("2");
             }
         });
 

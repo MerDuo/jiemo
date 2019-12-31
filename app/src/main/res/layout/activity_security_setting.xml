@@ -8,11 +8,18 @@
     tools:context=".mine.accountManage"
     android:background="#fafafa">
 <!--    <include layout="@layout/top3"></include>-->
+    <cn.edu.cdut.jiemo.diary.Top2View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:id="@+id/title_fragement"
+        app:top2_text="安全设置"
+        app:top2_color="#778899">
+    </cn.edu.cdut.jiemo.diary.Top2View>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_alignTop="@+id/view1"
         android:layout_marginTop="60sp"
         >
     </LinearLayout>

@@ -5,6 +5,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -34,7 +35,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
         //注册换肤功能
         SkinManager.getInstance().register(this);
         setContentView(R.layout.activity_main);
-
 
 //        //滚动效果
 //        scrollView = (ScrollView) findViewById(R.id.id_scrollView);

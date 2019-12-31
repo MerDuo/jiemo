@@ -1,10 +1,13 @@
 package cn.edu.cdut.jiemo.mine;
 
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.os.Bundle;
 
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.zhy.changeskin.SkinManager;
 
@@ -59,6 +62,38 @@ public class aboutUs extends AppCompatActivity {
         weibo.setRightIconSize(0);
         email.setRightIconSize(0);
 
+        //点击复制相应的内容到剪切板
+        QQ.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                copy(QQ.getRightText(),getApplicationContext());
+                Toast.makeText(getApplicationContext(), "已复制QQ到剪切板", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        weixin.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                copy(weixin.getRightText(),getApplicationContext());
+                Toast.makeText(getApplicationContext(), "已复制微信到剪切板", Toast.LENGTH_SHORT).show();
+            }
+        });
+        weibo.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                copy(weibo.getRightText(),getApplicationContext());
+                Toast.makeText(getApplicationContext(), "已复制微博到剪切板", Toast.LENGTH_SHORT).show();
+            }
+        });
+        email.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                copy(email.getRightText(),getApplicationContext());
+                Toast.makeText(getApplicationContext(), "已复制邮箱到剪切板", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
         // return
 //        ImageView return_btn = findViewById(R.id.returnbtn);
 //        return_btn.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +104,12 @@ public class aboutUs extends AppCompatActivity {
 //        });
 
 
+    }
+    //复制到剪贴板
+    public static void copy(String s, Context context) {
+// 剪切板管理器
+        ClipboardManager cbm= (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        cbm.setText(s.trim());
     }
 
     @Override

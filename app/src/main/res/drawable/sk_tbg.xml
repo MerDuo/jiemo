@@ -3,5 +3,5 @@
     android:shape="rectangle">
 
     <solid
-        android:color="#D2F5EE"/>
+        android:color="@color/c_tilte"/>
 </shape>

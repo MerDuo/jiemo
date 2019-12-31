@@ -24,9 +24,9 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabTextColor="#778899"
+            app:tabTextColor="@color/c_text"
             android:background="@drawable/sk_tbg"
-            android:tag="skin:sk_tbg:background"
+            android:tag="skin:sk_tbg:background|skin:c_text:tabTextColor"
             app:tabTextAppearance="@style/TabLayoutTextStyle"/>
 
 

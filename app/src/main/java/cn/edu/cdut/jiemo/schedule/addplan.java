@@ -20,6 +20,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.zhy.changeskin.SkinManager;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.SimpleDateFormat;
@@ -44,6 +46,8 @@ public class addplan extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //注册换肤功能
+        SkinManager.getInstance().register(this);
         setContentView(R.layout.activity_addplan);
         init();
         setDay();
@@ -200,5 +204,12 @@ public class addplan extends AppCompatActivity {
         }
 
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //换肤功能注销
+        SkinManager.getInstance().unregister(this);
     }
 }

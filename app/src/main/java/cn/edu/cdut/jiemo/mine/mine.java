@@ -48,12 +48,21 @@ public class mine extends AppCompatActivity {
             }
         });
 
-        //点击关于我们跳转到关于我们界面
-        personalItemActivity aboutUs=findViewById(R.id.call);
-        aboutUs.setOnClickListener(new View.OnClickListener(){
+      //跳转到账号管理
+        personalItemActivity accoount=findViewById(R.id.account);
+        accoount.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(mine.this,aboutUs.class);
+                Intent intent=new Intent(mine.this,accountManage.class);
+                startActivity(intent);
+            }
+        });
+        //跳转到账号管理
+        personalItemActivity safe=findViewById(R.id.safe);
+        safe.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mine.this,securitySetting.class);
                 startActivity(intent);
             }
         });
@@ -64,6 +73,16 @@ public class mine extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(mine.this,changeTheme.class);
+                startActivity(intent);
+            }
+        });
+
+        //点击关于我们跳转到关于我们界面
+        personalItemActivity aboutUs=findViewById(R.id.call);
+        aboutUs.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mine.this,aboutUs.class);
                 startActivity(intent);
             }
         });
@@ -113,4 +132,37 @@ public class mine extends AppCompatActivity {
         //换肤功能注销
         SkinManager.getInstance().unregister(this);
     }
+
+    //跳转事件监听
+
+
+//    @Override
+//    public void onClick(View view) {
+//        int id=view.getId();
+//        switch (id){
+//            case R.id.user_image:
+//                //跳转到个人资料
+//                Intent intent=new Intent(mine.this, personalDocument.class);
+//                startActivity(intent);
+//                break;
+//            case R.id.aboutUs:
+//                //跳转到关于我们
+//                Intent intent2=new Intent(mine.this, aboutUs.class);
+//                startActivity(intent2);
+//                break;
+//            case R.id.theme:
+//                //跳转到更换主题
+//                Intent intent3=new Intent(mine.this,changeTheme.class);
+//                startActivity(intent3);
+//                break;
+//            case R.id.account:
+//                //跳转到账号管理
+//                Intent intent4=new Intent (mine.this,accountManage.class);
+//                startActivity(intent4);
+//                break;
+//            case R.id.safe:
+//                Intent intent5=new Intent (mine.this,accountManage.class);
+//                startActivity(intent5);
+//                break;
+//        }
 }

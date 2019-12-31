@@ -25,7 +25,7 @@ public class personalItemActivity extends LinearLayout {
     public personalItemActivity(Context context) {
         super(context);
     }
-
+    TextView rightText;
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public personalItemActivity(Context context, AttributeSet attrs) {
         super(context,attrs);
@@ -40,7 +40,7 @@ public class personalItemActivity extends LinearLayout {
         TextView leftTitle=findViewById(R.id.item_text);
         View bottomLine=findViewById(R.id.buttom_line);
         View rightArrow=findViewById(R.id.right_icon);
-        TextView rightText=findViewById(R.id.right_text);
+        rightText=findViewById(R.id.right_text);
 
         leftIcon.setBackground(ta.getDrawable(R.styleable.personal_item_left_icon));//设置左侧图标
         leftTitle.setText(ta.getString(R.styleable.personal_item_left_text));//设置左侧标题文字
@@ -69,6 +69,10 @@ public class personalItemActivity extends LinearLayout {
         ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) imageView.getLayoutParams();
         params.height= dip2px(this.getContext(), size);
         imageView.setLayoutParams(params);
+    }
+    //返回右边的文本内容
+    public String getRightText(){
+        return rightText.getText().toString();
     }
 
     /**

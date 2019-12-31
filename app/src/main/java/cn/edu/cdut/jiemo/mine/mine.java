@@ -22,70 +22,11 @@ public class mine extends AppCompatActivity {
         Log.d("mine1", "onCreate: ");
         super.onCreate(savedInstanceState);
 
-        //注册换肤功能
-        SkinManager.getInstance().register(this);
+        //设置布局
+        setlayout();
 
-        setContentView(R.layout.activity_mine);
-
-        //去掉系统自带的标题栏
-        ActionBar actionbar=getSupportActionBar();
-        if(actionbar !=null)
-        {
-            actionbar.hide();
-        }
-        //设置导航栏宽度
-        //
-        titleFragment titlefragment=(titleFragment)getSupportFragmentManager().findFragmentById(R.id.title_fragement);
-        titlefragment.setButtompadding(70);
-
-        //点击头像跳转到个人资料界面
-        circleImageView userimage=findViewById(R.id.user_image);
-        userimage.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(mine.this, personalDocument.class);
-                startActivity(intent);
-            }
-        });
-
-      //跳转到账号管理
-        personalItemActivity accoount=findViewById(R.id.account);
-        accoount.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(mine.this,accountManage.class);
-                startActivity(intent);
-            }
-        });
-        //跳转到账号管理
-        personalItemActivity safe=findViewById(R.id.safe);
-        safe.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(mine.this,securitySetting.class);
-                startActivity(intent);
-            }
-        });
-
-        //点击更改主题跳转到更改主题界面
-        personalItemActivity changeTheme=findViewById(R.id.theme);
-        changeTheme.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(mine.this,changeTheme.class);
-                startActivity(intent);
-            }
-        });
-
-        //点击关于我们跳转到关于我们界面
-        personalItemActivity aboutUs=findViewById(R.id.call);
-        aboutUs.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(mine.this,aboutUs.class);
-                startActivity(intent);
-            }
-        });
+        //设置点击事件监听
+        setOnClickListener();
 
         //记录用户启动程序的次数
         SharedPreferences pref=getSharedPreferences("data",MODE_PRIVATE);
@@ -165,4 +106,80 @@ public class mine extends AppCompatActivity {
 //                startActivity(intent5);
 //                break;
 //        }
+
+
+    //设置点击事件函数
+    protected void setOnClickListener(){
+        //点击头像跳转到个人资料界面
+        circleImageView userimage=findViewById(R.id.user_image);
+        userimage.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(mine.this, personalDocument.class);
+                startActivity(intent);
+            }
+        });
+
+        //跳转到账号管理
+        personalItemActivity accoount=findViewById(R.id.account);
+        accoount.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mine.this,accountManage.class);
+                startActivity(intent);
+            }
+        });
+        //跳转到账号管理
+        personalItemActivity safe=findViewById(R.id.safe);
+        safe.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mine.this,securitySetting.class);
+                startActivity(intent);
+            }
+        });
+
+        //点击更改主题跳转到更改主题界面
+        personalItemActivity changeTheme=findViewById(R.id.theme);
+        changeTheme.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mine.this,changeTheme.class);
+                startActivity(intent);
+            }
+        });
+
+        //点击关于我们跳转到关于我们界面
+        personalItemActivity aboutUs=findViewById(R.id.call);
+        aboutUs.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mine.this,aboutUs.class);
+                startActivity(intent);
+            }
+        });
+    }
+    protected void setlayout(){
+        //注册换肤功能
+        SkinManager.getInstance().register(this);
+        setContentView(R.layout.activity_mine);
+
+        //去掉系统自带的标题栏
+        ActionBar actionbar=getSupportActionBar();
+        if(actionbar !=null)
+        {
+            actionbar.hide();
+        }
+        //设置导航栏宽度
+        //
+        titleFragment titlefragment=(titleFragment)getSupportFragmentManager().findFragmentById(R.id.title_fragement);
+        titlefragment.setButtompadding(70);
+    }
+
+    //设置用户名
+    public void setUserName(){
+        SharedPreferences pref=getSharedPreferences("data",MODE_PRIVATE);
+
+    }
+
 }

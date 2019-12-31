@@ -166,7 +166,8 @@
         android:textColor="#ffffff"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:background="@drawable/button"
+        android:background="@drawable/sk_tbg"
+        android:tag="skin:sk_tbg:background"
         android:gravity="center"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
@@ -180,10 +181,10 @@
         android:textColor="#ffffff"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:background="@drawable/button"
+        android:background="@drawable/sk_tbg"
+        android:tag="skin:sk_tbg:background"
         android:gravity="center"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
-
         />
 </LinearLayout>

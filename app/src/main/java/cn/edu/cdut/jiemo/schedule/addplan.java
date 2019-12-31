@@ -149,7 +149,7 @@ public class addplan extends AppCompatActivity {
                 final int day = mcalendar.get(Calendar.DATE);
                 mday.setText(year+"-"+month+"-"+day);
                 //mday.setText("选择时间：" + year + "年" + month + "月" + day + "日");
-                new DatePickerDialog(addplan.this, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT, new DatePickerDialog.OnDateSetListener() {
+                new DatePickerDialog(addplan.this, AlertDialog.THEME_HOLO_LIGHT, new DatePickerDialog.OnDateSetListener() {
 
                     //实现监听方法
 
@@ -183,7 +183,7 @@ public class addplan extends AppCompatActivity {
             switime.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    new TimePickerDialog(addplan.this, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT, new TimePickerDialog.OnTimeSetListener() {
+                    new TimePickerDialog(addplan.this, AlertDialog.THEME_HOLO_LIGHT, new TimePickerDialog.OnTimeSetListener() {
 
                         //实现监听方法
 

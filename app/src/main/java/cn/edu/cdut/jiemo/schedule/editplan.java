@@ -25,6 +25,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.zhy.changeskin.SkinManager;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -49,6 +51,8 @@ public class editplan extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //注册主题换肤
+        SkinManager.getInstance().register(this);
         setContentView(R.layout.activity_editplan);
         init();
         setDay();
@@ -206,7 +210,7 @@ public class editplan extends AppCompatActivity {
                 final int day = mcalendar.get(Calendar.DATE);
                 mday.setText(year+"-"+month+"-"+day);
                 //mday.setText("选择时间：" + year + "年" + month + "月" + day + "日");
-                new DatePickerDialog(editplan.this, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT, new DatePickerDialog.OnDateSetListener() {
+                new DatePickerDialog(editplan.this, AlertDialog.THEME_HOLO_LIGHT, new DatePickerDialog.OnDateSetListener() {
 
                     //实现监听方法
 
@@ -240,7 +244,7 @@ public class editplan extends AppCompatActivity {
             switime.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    new TimePickerDialog(editplan.this, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT, new TimePickerDialog.OnTimeSetListener() {
+                    new TimePickerDialog(editplan.this, AlertDialog.THEME_HOLO_LIGHT, new TimePickerDialog.OnTimeSetListener() {
 
                         //实现监听方法
 
@@ -259,5 +263,11 @@ public class editplan extends AppCompatActivity {
             });
 
         }
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //换肤功能注销
+        SkinManager.getInstance().unregister(this);
     }
 }

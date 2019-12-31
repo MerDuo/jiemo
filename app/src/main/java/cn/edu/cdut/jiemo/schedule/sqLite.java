@@ -31,6 +31,8 @@ public class sqLite extends SQLiteOpenHelper {
                 "name text,"+
                 "sex text,"+
                 "age integer,"+
+                "theme text,"+
+                "safeps text,"+
                 "signature text)";
         sqLiteDatabase.execSQL(sql1);
 

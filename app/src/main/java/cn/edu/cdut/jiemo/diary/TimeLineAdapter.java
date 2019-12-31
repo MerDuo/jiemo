@@ -4,6 +4,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -36,23 +39,26 @@ public class TimeLineAdapter extends ArrayAdapter {
         final TimeLineBean tb = (TimeLineBean) getItem(position);
         View view = LayoutInflater.from(getContext()).inflate(imgId,parent,false);
         LinearLayout linearLayout = view.findViewById(R.id.timeline_view);
+        TextView tv_date = view.findViewById(R.id.headdate);
         TextView tv_time = view.findViewById(R.id.headtime);
         ImageView tv_img = view.findViewById(R.id.headimage);
         TextView tv_text = view.findViewById(R.id.headtext);
 
         assert tb != null;
         tv_time.setText(tb.getTime());
+        tv_date.setText(tb.getDate());
+        Log.e("category",tb.getCategory());
         switch (tb.getCategory()){
-            case "diary":
+            case "日记":
                 tv_img.setImageResource(R.drawable.diary);
                 break;
-            case "memo":
+            case "备忘":
                 tv_img.setImageResource(R.drawable.memo);
                 break;
-            case "essay":
+            case "随笔":
                 tv_img.setImageResource(R.drawable.essay);
                 break;
-            case "others":
+            case "其他":
                 tv_img.setImageResource(R.drawable.others);
                 break;
         }
@@ -62,10 +68,12 @@ public class TimeLineAdapter extends ArrayAdapter {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(getContext(),"得到id："+tb.getId(),Toast.LENGTH_SHORT).show();
-                Bundle bundle = new Bundle();
-                bundle.putInt("id",tb.getId());
+//                Bundle bundle = new Bundle();
+//                bundle.putString("title",tb.getText());
+//                Log.e("title:",tb.getText().toString());
                 Intent intent = new Intent(getContext(),diaryWrite.class);
-                intent.putExtras(bundle);
+                intent.putExtra("title",tb.getText().toString());
+                intent.putExtra("updateflag",1);
                 getContext().startActivity(intent);
             }
         });

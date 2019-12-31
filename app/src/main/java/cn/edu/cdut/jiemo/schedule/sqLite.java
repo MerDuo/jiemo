@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import cn.edu.cdut.jiemo.diary.DiaryBean;
 import cn.edu.cdut.jiemo.userBean.userBean;
 public class sqLite extends SQLiteOpenHelper {
     private static final String db_name = "MyDatabase.db";//自定义的数据库名；
@@ -36,12 +38,14 @@ public class sqLite extends SQLiteOpenHelper {
 
         //创建手账表
         String sql2="CREATE TABLE diary(did integer primary key autoincrement,"+
-                "title text not null,"+
+                "title text not null," +
                 "diarytext text not null," +
-                "font text,"+
-                "fontsize integer,"+
-                "diarytime text,"+
-                "diarycatagory text,"+
+                "fontcolor varchar(30)," +
+                "fontsize real," +
+                "diarydate varchar(30)," +
+                "diarytime varchar(30)," +
+                "diarycategory varchar(30)," +
+                "background integer,"+
                 "uid integer,"+
                 "foreign key(uid) references users(uid) on delete cascade on update cascade)";
         sqLiteDatabase.execSQL(sql2);
@@ -132,4 +136,33 @@ public class sqLite extends SQLiteOpenHelper {
         }
         return false;
     }
+
+    // 手账
+    public void insertDiary(DiaryBean diaryBean){
+        //SQLiteDatabase database = getWritableDatabase();
+        ContentValues cv = new ContentValues();//键值对的集合
+        cv.put("title" , diaryBean.title);
+        cv.put("diarytext",diaryBean.diarytext);
+        cv.put("fontcolor",diaryBean.fontcolor);
+        cv.put("fontsize",diaryBean.fontsize);
+        cv.put("diarydate",diaryBean.diarydate);
+        cv.put("diarytime",diaryBean.diarytime);
+        cv.put("diarycategory",diaryBean.diarycategory);
+        cv.put("background",diaryBean.background);
+
+        database.insert("diary",null,cv);
+        Log.i("成功插入数据","diaryinsert");
+    }
+    public Cursor getAllDiary(){
+        return database.query("diary",null,null,null,null,null,null);
+    }
+
+    public Cursor getDiary(String title){
+        return database.query("diary",null,"title=?",new String[]{title},null,null,null);
+    }
+
+    public long deleteDiary(String title){
+        return database.delete("diary","title='"+title+"'",null);
+    }
+
 }

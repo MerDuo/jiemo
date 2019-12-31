@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import cn.edu.cdut.jiemo.userBean;
+import cn.edu.cdut.jiemo.userBean.userBean;
 public class sqLite extends SQLiteOpenHelper {
     private static final String db_name = "MyDatabase.db";//自定义的数据库名；
     private static final int version = 1;//版本号

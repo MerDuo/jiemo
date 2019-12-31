@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import cn.edu.cdut.jiemo.schedule.sqLite;
+import cn.edu.cdut.jiemo.userBean.userBean;
 
 public class register extends AppCompatActivity {
     private sqLite mySQLiteOpenHelper;//数据库

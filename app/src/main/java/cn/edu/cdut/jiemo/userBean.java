@@ -1,4 +1,4 @@
-package cn.edu.cdut.jiemo.userBean;
+package cn.edu.cdut.jiemo;
 
 public class userBean {
     public String userName;

@@ -1,6 +1,9 @@
 package cn.edu.cdut.jiemo.fragment;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +19,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.edu.cdut.jiemo.R;
+import cn.edu.cdut.jiemo.diary.DiaryBean;
 import cn.edu.cdut.jiemo.diary.TimeLineAdapter;
 import cn.edu.cdut.jiemo.diary.TimeLineBean;
+import cn.edu.cdut.jiemo.schedule.sqLite;
 
 //public class diaryFragment extends ListFragment {
 public class diaryFragment extends Fragment {
+
+    private sqLite mySQLiteOpenHelper;
+    private SQLiteDatabase myDatabase;
+    private List<DiaryBean> msBeanList = new ArrayList<>();
 
     private List<TimeLineBean> timelineList = new ArrayList<>();
     ListView listView;
@@ -58,12 +67,55 @@ public class diaryFragment extends Fragment {
     }
 
     public void initData() {
-//        timelineList.add(new TimeLineBean("2019-12-05", R.drawable.pic1, "test","diary"));
-        timelineList.add(new TimeLineBean(1,"2019-12-05", "个人日志","diary"));
-        timelineList.add(new TimeLineBean(2,"2019-12-01", "小记事","memo"));
-        timelineList.add(new TimeLineBean(3,"2019-11-25", "一些感想","essay"));
-        timelineList.add(new TimeLineBean(4,"2019-11-15", "杂七杂八的东西","others"));
-        timelineList.add(new TimeLineBean(5,"2019-11-05", "不知道是什么","diary"));
+        mySQLiteOpenHelper = new sqLite(getContext());
+        myDatabase = mySQLiteOpenHelper.getWritableDatabase();
+
+        final Cursor cursor = mySQLiteOpenHelper.getAllDiary();
+        //adapter.notifyDataSetChanged();
+        msBeanList.clear();
+        while(cursor.moveToNext()){
+            Log.e("data：",cursor.getString(cursor.getColumnIndex("title")));
+            DiaryBean diaryBean = new DiaryBean();
+            diaryBean.title = cursor.getString(cursor.getColumnIndex("title"));
+            diaryBean.diarycategory = cursor.getString(cursor.getColumnIndex("diarycategory"));
+            diaryBean.diarydate = cursor.getString(cursor.getColumnIndex("diarydate"));
+            diaryBean.diarytime = cursor.getString(cursor.getColumnIndex("diarytime"));
+            msBeanList.add(diaryBean);
+        }
+
+        for (int i=0;i<msBeanList.size();i++) {
+            int n = msBeanList.size() - i-1;
+            cursor.moveToPosition(n);
+            //select = cursor.getInt(1);
+            String title = msBeanList.get(n).title;
+            String diarycategory = msBeanList.get(n).diarycategory;
+            String diarydate = msBeanList.get(n).diarydate;
+            String diarytime = msBeanList.get(n).diarytime;
+            //Log.e("cursor:",diarycategory);
+            timelineList.add(new TimeLineBean(n, diarydate, diarytime, title, diarycategory));
+        }
+
+////            String oplan = msBeanList.get(i).plan;
+////            String oday = msBeanList.get(i).day;
+////            String ocheck = msBeanList.get(i).check;
+////            String otime = msBeanList.get(i).time;
+//            Intent intent = new Intent(calender.this, editplan.class);
+//            Bundle bundle = new Bundle();
+//            bundle.putString("oplan", oplan);
+//            bundle.putString("oday", oday);
+//            bundle.putString("otime", otime);
+//            bundle.putString("ocheck", ocheck);
+//            bundle.putInt("dbid", select);
+//            intent.putExtras(bundle);
+//            startActivity(intent);
+//        }
+//
+////        timelineList.add(new TimeLineBean("2019-12-05", R.drawable.pic1, "test","diary"));
+//        timelineList.add(new TimeLineBean(1,"2019-12-05", "个人日志","diary"));
+//        timelineList.add(new TimeLineBean(2,"2019-12-01", "小记事","memo"));
+//        timelineList.add(new TimeLineBean(3,"2019-11-25", "一些感想","essay"));
+//        timelineList.add(new TimeLineBean(4,"2019-11-15", "杂七杂八的东西","others"));
+//        timelineList.add(new TimeLineBean(5,"2019-11-05", "不知道是什么","diary"));
     }
 
     public void setListViewHeight(ListView listview){

@@ -32,15 +32,18 @@ public class Top2View extends RelativeLayout{
 
         typedArray.recycle();
 
-//        ImageView return_btn = findViewById(R.id.returnbtn);
-//        return_btn.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //Toast.makeText(context,"close",Toast.LENGTH_SHORT);
-//            }
-//        });
+        ImageView return_btn = findViewById(R.id.returnbtn);
+        return_btn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(context,"close",Toast.LENGTH_SHORT).show();
+                ((Activity)getContext()).finish();
+            }
+        });
 
     }
+
+
     public void setText(String text){
         tv.setText(text);
     }

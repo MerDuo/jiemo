@@ -17,13 +17,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 //ty配置
-        dexOptions {
-            // release & debug is in project animators
-            matchingFallbacks = ['release', 'debug']
-        }
-        debug {
-
-        }
+//        dexOptions {
+//            // release & debug is in project animators
+//            matchingFallbacks = ['release', 'debug']
+//        }
+//        debug {
+//
+//        }
 //ty配置请注释之间的代码
     }
 

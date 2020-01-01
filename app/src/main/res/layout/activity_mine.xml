@@ -92,6 +92,7 @@
         android:layout_marginBottom="30dp"
         android:paddingLeft="150px"
         android:paddingRight="150px"
+        android:background="@drawable/exit_btn"
         android:textColor="@color/textcolor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

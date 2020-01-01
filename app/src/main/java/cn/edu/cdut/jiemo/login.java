@@ -8,6 +8,7 @@ import android.content.pm.ActivityInfo;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -96,8 +97,10 @@ public class login extends AppCompatActivity{
                     //初始化用户数据Name
                     getUser().initUser(getApplicationContext(),userName);
                     //设置用户主题
-                    if(getUser().getTheme()!=null)
+                    if(getUser().getTheme()!=null){
                         SkinManager.getInstance().changeSkin(getUser().getTheme());
+                        Log.d("aaa","theme"+getUser().getTheme());
+                    }
                     //保存登录状态，在界面保存登录的用户名 定义个方法 saveLoginStatus boolean 状态 , userName 用户名;
                     saveLoginStatus(true, userName);
                     //登录成功后关闭此页面进入主页

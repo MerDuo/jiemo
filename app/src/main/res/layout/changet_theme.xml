@@ -38,7 +38,7 @@
         android:textColor="@color/textcolor"
         android:text="默认" />
     <Button
-        android:id="@+id/white"
+        android:id="@+id/pink"
         android:background="@drawable/sk_tbg_4"
         android:layout_gravity="fill"
         android:layout_columnWeight="1"

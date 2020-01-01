@@ -14,7 +14,7 @@
         android:layout_centerInParent="true"
         android:text="@string/mine"
         android:textSize="17sp"
-        android:textColor="@color/c_text"
+        android:textColor="@color/textcolor"
         android:tag="skin:c_text:textColor"
          />
 

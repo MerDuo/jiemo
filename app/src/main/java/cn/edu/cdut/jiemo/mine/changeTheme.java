@@ -10,6 +10,8 @@ import com.zhy.changeskin.SkinManager;
 
 import cn.edu.cdut.jiemo.R;
 
+import static cn.edu.cdut.jiemo.mine.mineUserDao.getUser;
+
 
 /**
  * Created by aaa on 2019/12/28.
@@ -44,18 +46,21 @@ public class changeTheme extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SkinManager.getInstance().changeSkin("4");
+                getUser().changeTheme("4");
             }
         });
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SkinManager.getInstance().changeSkin("3");
+                getUser().changeTheme("3");
             }
         });
         b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SkinManager.getInstance().changeSkin("2");
+                getUser().changeTheme("2");
             }
         });
 

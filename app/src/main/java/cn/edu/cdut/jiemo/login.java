@@ -15,7 +15,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.zhy.changeskin.SkinManager;
+
 import cn.edu.cdut.jiemo.schedule.sqLite;
+
+import static cn.edu.cdut.jiemo.mine.mineUserDao.getUser;
 
 public class login extends AppCompatActivity{
     private sqLite mySQLiteOpenHelper;//数据库
@@ -29,9 +33,12 @@ public class login extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //注册换肤功能
+        SkinManager.getInstance().register(this);
+
         setContentView(R.layout.activity_login);
         //设置此界面为竖屏
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         init();
 
     }
@@ -86,6 +93,11 @@ public class login extends AppCompatActivity{
                 }else if(mySQLiteOpenHelper.login(userName,md5Psw)){
                     //一致登录成功
                     Toast.makeText(login.this, "登录成功", Toast.LENGTH_SHORT).show();
+                    //初始化用户数据Name
+                    getUser().initUser(getApplicationContext(),userName);
+                    //设置用户主题
+                    if(getUser().getTheme()!=null)
+                        SkinManager.getInstance().changeSkin(getUser().getTheme());
                     //保存登录状态，在界面保存登录的用户名 定义个方法 saveLoginStatus boolean 状态 , userName 用户名;
                     saveLoginStatus(true, userName);
                     //登录成功后关闭此页面进入主页
@@ -178,5 +190,11 @@ public class login extends AppCompatActivity{
                 //et_psw.setSelection(psw.length());
             }
         }
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //换肤功能注销
+        SkinManager.getInstance().unregister(this);
     }
 }

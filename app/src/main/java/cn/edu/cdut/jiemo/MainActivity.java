@@ -5,25 +5,16 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.PopupMenu;
 import android.widget.ScrollView;
-import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.zhy.changeskin.SkinManager;
 
 import cn.edu.cdut.jiemo.diary.SectionsPagerAdapter;
 import cn.edu.cdut.jiemo.mine.mine;
 import cn.edu.cdut.jiemo.schedule.addplan;
-import cn.edu.cdut.jiemo.schedule.calender;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener{
 

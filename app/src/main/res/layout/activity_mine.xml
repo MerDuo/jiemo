@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--我的界面-->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/window"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -27,7 +28,7 @@
         android:layout_height="80dp"
         android:id="@+id/user_image"
         android:background="@drawable/shape_radius"
-        android:src="@drawable/user_image"
+        android:src="@drawable/toux"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guideline_imge"
@@ -37,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="17sp"
-        android:text="Allo"
+        android:text="未登录"
         android:padding="10dp"
         android:textColor="@color/textcolor"
         app:layout_constraintTop_toBottomOf="@id/user_image"
@@ -53,10 +54,10 @@
         android:orientation="vertical">
 
         <cn.edu.cdut.jiemo.mine.personalItemActivity
-            android:id="@+id/account"
+            android:id="@+id/document"
             android:layout_height="0dp"
             android:layout_width="match_parent"
-            app:left_text="账号管理"
+            app:left_text="个人资料"
             android:layout_weight="1"
             app:left_icon="@drawable/account"/>
 

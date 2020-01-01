@@ -6,7 +6,7 @@
         <!-- Customize your theme here. -->
         <!--取消app启动时的白屏-->
         <item name="colorAccent">@color/c_accent</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <!--<item name="android:windowIsTranslucent">true</item>-->
     </style>
 
     <style name="text" parent="Theme.AppCompat.Light.NoActionBar">

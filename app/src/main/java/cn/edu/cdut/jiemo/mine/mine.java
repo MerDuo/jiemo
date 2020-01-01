@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.zhy.changeskin.SkinManager;
@@ -12,59 +13,44 @@ import com.zhy.changeskin.SkinManager;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import cn.edu.cdut.jiemo.R;
 import cn.edu.cdut.jiemo.fragment.titleFragment;
+import cn.edu.cdut.jiemo.login;
+
+import static cn.edu.cdut.jiemo.mine.mineUserDao.getUser;
 
 public class mine extends AppCompatActivity {
-
+    Boolean isLogin;
+    SharedPreferences pref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("mine1", "onCreate: ");
         super.onCreate(savedInstanceState);
 
         //设置布局
         setlayout();
 
-        //设置点击事件监听
-        setOnClickListener();
+        //设置更改主题、关于我们点击事件监听
+        setClickListeners();
 
-        //记录用户启动程序的次数
-        SharedPreferences pref=getSharedPreferences("data",MODE_PRIVATE);
-        SharedPreferences.Editor editor=pref.edit();
-        int count=pref.getInt("count",0);
-        Log.d("mine1", "mineDebug"+count);
-
-        if(count==0){
-            //如果是第一次启动程序,存储用户数据
-            editor.putString("name","Allo");
-            editor.putInt("age",1);
-            editor.putString("sex","女");
-            editor.putString("words","....");
-            editor.putInt("count",++count);
-            editor.apply();
-            Log.d("mine1", "save");
+        //判断用户是否登录
+        pref=getSharedPreferences("loginInfo",MODE_PRIVATE);
+        isLogin=pref.getBoolean("isLogin",false);
+        if(isLogin){
+            //用户已经登录
+            login();
+        }else{
+            //未登录
+            unlogin();
         }
-        else{
-            editor.putInt("count",++count);
-            editor.apply();
-            Log.d("mine1", "agin"+count++);
-        }
-
-        //设置用户名
-        String name=pref.getString("name","");
-        TextView userName=findViewById(R.id.userName);
-        userName.setText(name);
 
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
+    protected void onStart() {
+        super.onStart();
+        refreash();
 
-        SharedPreferences pref=getSharedPreferences("data",MODE_PRIVATE);
-        String name=pref.getString("name","");
-        TextView userName=findViewById(R.id.userName);
-        userName.setText(name);
     }
 
     @Override
@@ -74,70 +60,9 @@ public class mine extends AppCompatActivity {
         SkinManager.getInstance().unregister(this);
     }
 
-    //跳转事件监听
-
-
-//    @Override
-//    public void onClick(View view) {
-//        int id=view.getId();
-//        switch (id){
-//            case R.id.user_image:
-//                //跳转到个人资料
-//                Intent intent=new Intent(mine.this, personalDocument.class);
-//                startActivity(intent);
-//                break;
-//            case R.id.aboutUs:
-//                //跳转到关于我们
-//                Intent intent2=new Intent(mine.this, aboutUs.class);
-//                startActivity(intent2);
-//                break;
-//            case R.id.theme:
-//                //跳转到更换主题
-//                Intent intent3=new Intent(mine.this,changeTheme.class);
-//                startActivity(intent3);
-//                break;
-//            case R.id.account:
-//                //跳转到账号管理
-//                Intent intent4=new Intent (mine.this,accountManage.class);
-//                startActivity(intent4);
-//                break;
-//            case R.id.safe:
-//                Intent intent5=new Intent (mine.this,accountManage.class);
-//                startActivity(intent5);
-//                break;
-//        }
-
 
     //设置点击事件函数
-    protected void setOnClickListener(){
-        //点击头像跳转到个人资料界面
-        circleImageView userimage=findViewById(R.id.user_image);
-        userimage.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(mine.this, personalDocument.class);
-                startActivity(intent);
-            }
-        });
-
-        //跳转到账号管理
-        personalItemActivity accoount=findViewById(R.id.account);
-        accoount.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(mine.this,accountManage.class);
-                startActivity(intent);
-            }
-        });
-        //跳转到账号管理
-        personalItemActivity safe=findViewById(R.id.safe);
-        safe.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(mine.this,securitySetting.class);
-                startActivity(intent);
-            }
-        });
+    protected void setClickListeners(){
 
         //点击更改主题跳转到更改主题界面
         personalItemActivity changeTheme=findViewById(R.id.theme);
@@ -159,6 +84,8 @@ public class mine extends AppCompatActivity {
             }
         });
     }
+
+    //界面设置操作
     protected void setlayout(){
         //注册换肤功能
         SkinManager.getInstance().register(this);
@@ -176,9 +103,122 @@ public class mine extends AppCompatActivity {
         titlefragment.setButtompadding(70);
     }
 
-    //设置用户名
-    public void setUserName(){
-        SharedPreferences pref=getSharedPreferences("data",MODE_PRIVATE);
+    public void refreash(){
+        //设置名称
+        String name=getUser().getUserName();
+        isLogin=pref.getBoolean("isLogin",false);
+        if(isLogin){
+            TextView userName=findViewById(R.id.userName);
+            userName.setText(name);
+            circleImageView user_imge=findViewById(R.id.user_image);
+            user_imge.setImageResource(R.drawable.user_image);
+        }else{
+//            TextView userName=findViewById(R.id.userName);
+//            userName.setText("未登录");
+//            circleImageView user_imge=findViewById(R.id.user_image);
+//            user_imge.setImageResource(R.drawable.toux);
+
+        }
+        //设置头像
+
+    }
+
+    //当用户登录时
+    public void login(){
+        SharedPreferences pref=getSharedPreferences("loginInfo",MODE_PRIVATE);
+        String name=pref.getString("loginUserName","");
+
+
+        //初始化用户数据Name
+        getUser().initUser(getApplicationContext(),name);
+
+        //点击头像跳转更改头像
+//        circleImageView userimage=findViewById(R.id.user_image);
+//        userimage.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent=new Intent(mine.this, personalDocument.class);
+//                startActivity(intent);
+//            }
+//        });
+
+        //跳转到个人资料
+        personalItemActivity accoount=findViewById(R.id.document);
+        accoount.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mine.this,personalDocument.class);
+                startActivity(intent);
+            }
+        });
+        //跳转到安全设置
+        personalItemActivity safe=findViewById(R.id.safe);
+        safe.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mine.this,securitySetting.class);
+                startActivity(intent);
+            }
+        });
+        //退出登录
+        Button exitBut=findViewById(R.id.exit);
+        exitBut.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                //清除sharepreference的内容
+                SharedPreferences sp=getSharedPreferences("loginInfo", MODE_PRIVATE);
+                SharedPreferences.Editor editor=sp.edit();
+                editor.putBoolean("isLogin", false);
+                editor.commit();
+                //恢复默认主题色
+                SkinManager.getInstance().changeSkin("");
+                //清除user的内容
+                getUser().clearUser();
+                //设置头像和用户名为未登录状态
+                TextView userName=findViewById(R.id.userName);
+                userName.setText("未登录");
+                circleImageView user_imge=findViewById(R.id.user_image);
+                user_imge.setImageResource(R.drawable.toux);
+                //执行未登录的方法
+                unlogin();
+            }
+        });
+
+    }
+
+    //当用户未登录时
+    public void unlogin(){
+        //移除退出登录按钮
+        ConstraintLayout window=findViewById(R.id.window);
+        window.removeView(findViewById(R.id.exit));
+
+        //点击头像跳转到登录界面
+        circleImageView userimage=findViewById(R.id.user_image);
+        userimage.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(mine.this, login.class);
+                startActivity(intent);
+            }
+        });
+        //点个人资料跳转到登录
+        personalItemActivity accoount=findViewById(R.id.document);
+        accoount.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mine.this,login.class);
+                startActivity(intent);
+            }
+        });
+        //点安全设置跳转到登录
+        personalItemActivity safe=findViewById(R.id.safe);
+        safe.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mine.this,login.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

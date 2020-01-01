@@ -40,7 +40,14 @@ android {
 //    }
 
 }
-
+allprojects {
+    repositories {
+        jcenter()
+        maven {
+            url "https://maven.google.com"
+        }
+    }
+}
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -60,3 +67,6 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-v4'
     }
 }
+
+
+

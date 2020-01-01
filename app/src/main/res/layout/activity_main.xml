@@ -202,6 +202,7 @@
 
 
 <!--    </ScrollView>-->
+
     <fragment
         android:id="@+id/nav_fragment"
         android:layout_width="wrap_content"

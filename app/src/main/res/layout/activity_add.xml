@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--加号按钮跳转页面-->
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,18 +8,20 @@
     android:background="#ffffff">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="100sp"
         android:orientation="horizontal"
-        android:paddingTop="350dp"
+        android:paddingTop="450dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        app:layout_constraintRight_toRightOf="parent"
+        tools:ignore="MissingConstraints">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_weight="1">
 
             <ImageView
                 android:id="@+id/countImg"
@@ -28,7 +30,8 @@
                 android:layout_gravity="center"
                 android:onClick="onClick"
                 android:src="@drawable/countdown"
-                android:tag="skin:countdown:src"></ImageView>
+                android:tag="skin:countdown:src"
+                ></ImageView>
 
             <TextView
                 android:id="@+id/countTxt"
@@ -39,14 +42,16 @@
                 android:onClick="onClick"
                 android:text="倒计时"
                 android:textColor="#000000"
-                android:textSize="10sp"></TextView>
+                android:textSize="10sp"
+                ></TextView>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_weight="1">
 
             <ImageView
                 android:id="@+id/diaryImg"
@@ -83,7 +88,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_weight="1">
 
             <ImageView
                 android:id="@+id/calImg"
@@ -107,4 +113,4 @@
         </LinearLayout>
 
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

@@ -37,9 +37,10 @@ public class add extends AppCompatActivity {
         }
     }
     public void returnimg(View v){
-        Intent intent = new Intent();
-        intent.setClass(add.this, MainActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent();
+//        intent.setClass(add.this, MainActivity.class);
+//        startActivity(intent);
+        add.this.finish();
     }
     @Override
     protected void onDestroy() {

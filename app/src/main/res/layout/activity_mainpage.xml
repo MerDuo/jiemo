@@ -21,17 +21,17 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             >
-<!--            <com.google.android.material.tabs.TabLayout-->
-<!--                android:id="@+id/tabs"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                app:tabTextColor="#778899"-->
-<!--                android:background="#D2F5EE" />-->
-<!--            <androidx.viewpager.widget.ViewPager-->
-<!--                android:id="@+id/view_pager"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                app:layout_behavior="@string/appbar_scrolling_view_behavior" />-->
+            <!--            <com.google.android.material.tabs.TabLayout-->
+            <!--                android:id="@+id/tabs"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                app:tabTextColor="#778899"-->
+            <!--                android:background="#D2F5EE" />-->
+            <!--            <androidx.viewpager.widget.ViewPager-->
+            <!--                android:id="@+id/view_pager"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="match_parent"-->
+            <!--                app:layout_behavior="@string/appbar_scrolling_view_behavior" />-->
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -198,10 +198,10 @@
 
 
     </ScrollView>
-<!--    <fragment-->
-<!--        android:id="@+id/nav_fragment"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        tools:layout="@layout/nav"-->
-<!--        android:name="cn.edu.cdut.jiemo.fragment.navFragment"/>-->
+    <!--    <fragment-->
+    <!--        android:id="@+id/nav_fragment"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        tools:layout="@layout/nav"-->
+    <!--        android:name="cn.edu.cdut.jiemo.fragment.navFragment"/>-->
 </RelativeLayout>

@@ -1,5 +1,7 @@
 package cn.edu.cdut.jiemo.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -23,6 +25,7 @@ import cn.edu.cdut.jiemo.diary.DiaryBean;
 import cn.edu.cdut.jiemo.diary.TimeLineAdapter;
 import cn.edu.cdut.jiemo.diary.TimeLineBean;
 import cn.edu.cdut.jiemo.schedule.sqLite;
+import cn.edu.cdut.jiemo.userBean.userBean;
 
 //public class diaryFragment extends ListFragment {
 public class diaryFragment extends Fragment {
@@ -34,8 +37,27 @@ public class diaryFragment extends Fragment {
     private List<TimeLineBean> timelineList = new ArrayList<>();
     ListView listView;
 
+    public static int firstUser = 0;
+    public int uid = 0;
+
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//            SharedPreferences sharedPreferences = getActivity().getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+//            Boolean isLogin=sharedPreferences.getBoolean("isLogin",false);
+//            int uid = sharedPreferences.getInt("userId",1);
+//            String username = sharedPreferences.getString("loginUserName","");
+//            Log.e("login","status"+isLogin);
+//            Log.e("login","uid:"+username);
+
+//        if (firstUser == 0) {
+//            userBean userBean = new userBean();
+//            userBean.userName = "first";
+//            userBean.password = "000000";
+//            mySQLiteOpenHelper.addUser(userBean);
+//            firstUser = 1;
+//        }
+//        Cursor cursor = mySQLiteOpenHelper.getUid("first");
         // 日志界面时间轴
 //        View diaryPageview = getLayoutInflater().inflate(R.layout.diarypage,null);
 //        View diaryPageview = inflater.inflate(R.layout.diarypage,container,false);
@@ -54,23 +76,47 @@ public class diaryFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+//        if (firstUser == 0) {
+//            userBean userBean = new userBean();
+//            userBean.userName = "first";
+//            userBean.password = "000000";
+//            mySQLiteOpenHelper.addUser(userBean);
+//            firstUser = 1;
+//        }
+//
+//        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+//        //uid = sharedPreferences.getInt("userId",0);
+//        boolean loginFlag = sharedPreferences.getBoolean("isLogin",false);
+//        if (loginFlag == true)
+//            uid = sharedPreferences.getInt("userId",0);
+//        Log.e("uid:","uid:"+uid);
+////        int uid = 1;
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+        Boolean isLogin=sharedPreferences.getBoolean("isLogin",false);
+        int uid = sharedPreferences.getInt("userId",1);
+        String username = sharedPreferences.getString("loginUserName","");
+        Log.e("login","status"+isLogin);
+        Log.e("login","uid:"+username);
+
         View diaryPageview = inflater.inflate(R.layout.diary_page, container, false);
         listView = diaryPageview.findViewById(android.R.id.list);
-        initData();
+        initData(username);
         TimeLineAdapter timelineAdapter = new TimeLineAdapter(getActivity(), R.layout.timeline_item, timelineList);
         //setListAdapter(timelineAdapter);
         listView.setAdapter(timelineAdapter);
         setListViewHeight(listView);
         //initData();
 //        return inflater.inflate(R.layout.diary_page, container, false);
+        //
+
         return diaryPageview;
     }
 
-    public void initData() {
+    public void initData(String username) {
         mySQLiteOpenHelper = new sqLite(getContext());
         myDatabase = mySQLiteOpenHelper.getWritableDatabase();
 
-        final Cursor cursor = mySQLiteOpenHelper.getAllDiary();
+        final Cursor cursor = mySQLiteOpenHelper.getAllDiary(username);
         //adapter.notifyDataSetChanged();
         msBeanList.clear();
         while(cursor.moveToNext()){

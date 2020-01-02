@@ -9,12 +9,17 @@
     android:background="@drawable/sk_bg"
     android:tag="skin:sk_bg:background">
 
-    <fragment
-        android:id="@+id/title_fragement"
+<!--    <fragment-->
+<!--        android:id="@+id/title_fragement"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:name="cn.edu.cdut.jiemo.fragment.titleFragment"-->
+<!--        tools:ignore="MissingConstraints" />-->
+    <cn.edu.cdut.jiemo.diary.Top2View
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:name="cn.edu.cdut.jiemo.fragment.titleFragment"
-        tools:ignore="MissingConstraints" />
+        app:top2_text="我的"
+        app:top2_color="#778899"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_imge"

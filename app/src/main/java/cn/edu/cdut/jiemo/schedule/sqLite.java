@@ -48,8 +48,10 @@ public class sqLite extends SQLiteOpenHelper {
                 "diarytime varchar(30)," +
                 "diarycategory varchar(30)," +
                 "background integer,"+
-                "uid integer,"+
-                "foreign key(uid) references users(uid) on delete cascade on update cascade)";
+                "uname varchar(30),"+
+                "foreign key(uname) references users(account) on delete cascade on update cascade)";
+        //                "uid integer,"+
+//                "foreign key(uid) references users(uid) on delete cascade on update cascade)";
         sqLiteDatabase.execSQL(sql2);
 
         //创建行程表
@@ -148,6 +150,32 @@ public class sqLite extends SQLiteOpenHelper {
     }
 
     // 手账
+//    public void insertDiary(DiaryBean diaryBean){
+//        //SQLiteDatabase database = getWritableDatabase();
+//        ContentValues cv = new ContentValues();//键值对的集合
+//        cv.put("title" , diaryBean.title);
+//        cv.put("diarytext",diaryBean.diarytext);
+//        cv.put("fontcolor",diaryBean.fontcolor);
+//        cv.put("fontsize",diaryBean.fontsize);
+//        cv.put("diarydate",diaryBean.diarydate);
+//        cv.put("diarytime",diaryBean.diarytime);
+//        cv.put("diarycategory",diaryBean.diarycategory);
+//        cv.put("background",diaryBean.background);
+//
+//        database.insert("diary",null,cv);
+//        Log.i("成功插入数据","diaryinsert");
+//    }
+//    public Cursor getAllDiary(){
+//        return database.query("diary",null,null,null,null,null,null);
+//    }
+//
+//    public Cursor getDiary(String title){
+//        return database.query("diary",null,"title=?",new String[]{title},null,null,null);
+//    }
+//
+//    public long deleteDiary(String title){
+//        return database.delete("diary","title='"+title+"'",null);
+//    }
     public void insertDiary(DiaryBean diaryBean){
         //SQLiteDatabase database = getWritableDatabase();
         ContentValues cv = new ContentValues();//键值对的集合
@@ -159,20 +187,21 @@ public class sqLite extends SQLiteOpenHelper {
         cv.put("diarytime",diaryBean.diarytime);
         cv.put("diarycategory",diaryBean.diarycategory);
         cv.put("background",diaryBean.background);
+        cv.put("uname",diaryBean.uname);
 
         database.insert("diary",null,cv);
         Log.i("成功插入数据","diaryinsert");
     }
-    public Cursor getAllDiary(){
-        return database.query("diary",null,null,null,null,null,null);
+    public Cursor getAllDiary(String username){
+        return database.query("diary",null,"uname=?",new String[]{username},null,null,null);
     }
 
-    public Cursor getDiary(String title){
-        return database.query("diary",null,"title=?",new String[]{title},null,null,null);
+    public Cursor getDiary(String title,String username){
+        return database.query("diary",null,"title=? and uname=?",new String[]{title,username},null,null,null);
     }
 
-    public long deleteDiary(String title){
-        return database.delete("diary","title='"+title+"'",null);
+    public long deleteDiary(String title,String username){
+        return database.delete("diary","title='"+title+"' and uname='"+username+"'",null);
     }
 
 }

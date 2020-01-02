@@ -133,14 +133,14 @@ public class mine extends AppCompatActivity {
         getUser().initUser(getApplicationContext(),name);
 
         //点击头像跳转更改头像
-//        circleImageView userimage=findViewById(R.id.user_image);
-//        userimage.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent=new Intent(mine.this, personalDocument.class);
-//                startActivity(intent);
-//            }
-//        });
+        circleImageView userimage=findViewById(R.id.user_image);
+        userimage.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(mine.this, changeUserImage.class);
+                startActivity(intent);
+            }
+        });
 
         //跳转到个人资料
         personalItemActivity accoount=findViewById(R.id.document);

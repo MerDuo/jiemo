@@ -30,6 +30,7 @@
         <activity android:name=".mine.securitySetting" />
         <activity android:name=".mine.accountManage" />
         <activity android:name=".mine.changeTheme"/>
+        <activity android:name=".mine.changeUserImage"/>
         <activity android:name=".add" />
         <activity android:name=".mine.aboutUs"/>
         <activity android:name=".MainActivity" >

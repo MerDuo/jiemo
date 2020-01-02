@@ -37,4 +37,6 @@
     <color name="c4_bg">#ffff</color>
     <color name="c_text_4">#778899</color>
 
+    <!--改头像-->
+    <color name="bg_color">#F5F5F5</color>
 </resources>

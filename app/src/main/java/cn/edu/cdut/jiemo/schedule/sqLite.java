@@ -62,6 +62,14 @@ public class sqLite extends SQLiteOpenHelper {
                 "uid integer,"+
                 "foreign key(uid) references users(uid) on delete cascade on update cascade)";
         sqLiteDatabase.execSQL(sql3);
+
+        //创建安全密码表
+        String sql4="CREATE TABLE securitypwd(sid integer primary key autoincrement,"+
+                "securitypwd text," +
+                "state text not null," +
+                "uid integer not null,"+
+                "foreign key(uid) references users(uid) on delete cascade on update cascade)";
+        sqLiteDatabase.execSQL(sql4);
     }
 
     @Override

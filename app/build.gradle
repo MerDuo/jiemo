@@ -17,13 +17,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 //ty配置
-        dexOptions {
-            // release & debug is in project animators
-            matchingFallbacks = ['release', 'debug']
-        }
-        debug {
-
-        }
+//        dexOptions {
+//            // release & debug is in project animators
+//            matchingFallbacks = ['release', 'debug']
+//        }
+//        debug {
+//
+//        }
 //ty配置请注释之间的代码
     }
 
@@ -63,10 +63,7 @@ dependencies {
 
 //    api 'com.dou361.dialogui:jjdxm-dialogui:1.0.3'
 
-    compile ('com.zhy:changeskin:4.0.2'){
+    compile('com.zhy:changeskin:4.0.2') {
         exclude group: 'com.android.support', module: 'support-v4'
     }
 }
-
-
-

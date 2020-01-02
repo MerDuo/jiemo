@@ -5,11 +5,12 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "cn.edu.cdut.jiemo"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+       // multiDexEnabled true
     }
     buildTypes {
         release {
@@ -17,13 +18,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 //ty配置
-//        dexOptions {
-//            // release & debug is in project animators
-//            matchingFallbacks = ['release', 'debug']
-//        }
-//        debug {
-//
-//        }
+        dexOptions {
+            // release & debug is in project animators
+            matchingFallbacks = ['release', 'debug']
+        }
+        debug {
+
+        }
 //ty配置请注释之间的代码
     }
 
@@ -66,5 +67,6 @@ dependencies {
     compile('com.zhy:changeskin:4.0.2') {
         exclude group: 'com.android.support', module: 'support-v4'
     }
+    compile 'com.android.support:multidex:1.0.2'
 
 }

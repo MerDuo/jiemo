@@ -2,6 +2,8 @@ package cn.edu.cdut.jiemo.mine;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.zhy.changeskin.SkinManager;
+
+import java.io.FileNotFoundException;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,12 +27,18 @@ import static cn.edu.cdut.jiemo.mine.mineUserDao.getUser;
 public class mine extends AppCompatActivity {
     Boolean isLogin;
     SharedPreferences pref;
+    //头像的uri和其string类型
+    private Uri imageUri;
+    private String imageUriStr;
+    //头像控件
+    circleImageView userImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         //设置布局
         setlayout();
+
 
         //设置更改主题、关于我们点击事件监听
         setClickListeners();
@@ -91,6 +101,9 @@ public class mine extends AppCompatActivity {
         SkinManager.getInstance().register(this);
         setContentView(R.layout.activity_mine);
 
+        //初始化控件
+        userImage=findViewById(R.id.user_image);
+
         //去掉系统自带的标题栏
         ActionBar actionbar=getSupportActionBar();
         if(actionbar !=null)
@@ -103,20 +116,25 @@ public class mine extends AppCompatActivity {
         titlefragment.setButtompadding(70);
     }
 
+    //刷新界面的数据
     public void refreash(){
-        //设置名称
+        //获取用户名称、头像uri数据
         String name=getUser().getUserName();
         isLogin=pref.getBoolean("isLogin",false);
+        imageUriStr=getUser().getUserImage();
         if(isLogin){
+            //设置用户名
             TextView userName=findViewById(R.id.userName);
             userName.setText(name);
             circleImageView user_imge=findViewById(R.id.user_image);
             user_imge.setImageResource(R.drawable.user_image);
+            //设置头像
+            if(imageUriStr!=null){
+                //转换为Uri
+                imageUri= Uri.parse(imageUriStr);
+                userImage.setImageURI(imageUri);
+            }
         }else{
-//            TextView userName=findViewById(R.id.userName);
-//            userName.setText("未登录");
-//            circleImageView user_imge=findViewById(R.id.user_image);
-//            user_imge.setImageResource(R.drawable.toux);
 
         }
         //设置头像
@@ -133,8 +151,7 @@ public class mine extends AppCompatActivity {
         getUser().initUser(getApplicationContext(),name);
 
         //点击头像跳转更改头像
-        circleImageView userimage=findViewById(R.id.user_image);
-        userimage.setOnClickListener(new View.OnClickListener(){
+        userImage.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(mine.this, changeUserImage.class);
@@ -177,8 +194,8 @@ public class mine extends AppCompatActivity {
                 //设置头像和用户名为未登录状态
                 TextView userName=findViewById(R.id.userName);
                 userName.setText("未登录");
-                circleImageView user_imge=findViewById(R.id.user_image);
-                user_imge.setImageResource(R.drawable.toux);
+                userImage=findViewById(R.id.user_image);
+                userImage.setImageResource(R.drawable.toux);
                 //执行未登录的方法
                 unlogin();
             }

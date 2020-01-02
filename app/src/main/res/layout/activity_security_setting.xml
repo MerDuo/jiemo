@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".mine.accountManage"
-    android:background="#fafafa">
+    android:background="#ffffff"
+    >
 <!--    <include layout="@layout/top3"></include>-->
     <cn.edu.cdut.jiemo.diary.Top2View
         android:layout_width="match_parent"
@@ -16,14 +17,14 @@
         app:top2_text="安全设置"
         app:top2_color="#778899">
     </cn.edu.cdut.jiemo.diary.Top2View>
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="60sp"
         >
-    </LinearLayout>
-    <LinearLayout
+    </RelativeLayout>
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -33,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:orientation="horizontal"
-            android:background="#ffffff"
+
             android:layout_marginTop="5sp">
             <ImageView
                 android:layout_width="30dp"
@@ -59,9 +60,8 @@
                 android:textOff="关"
                 tools:ignore="MissingConstraints,OnClick"
                 android:layout_marginLeft="300sp"
-                android:onClick="onClick"></Switch>
-
-
+                android:focusable="true"
+                android:focusableInTouchMode="false"></Switch>
 
 
 <!--Switch            <shape xmlns:android="http://schemas.android.com/apk/res/android"-->
@@ -74,5 +74,14 @@
 <!--                    android:topRightRadius="8dp"/>-->
 <!--            </shape>-->
         </RelativeLayout>
-    </LinearLayout>
+<!--        <ImageView-->
+<!--            android:id="@+id/buttom_line"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:background="@color/line"-->
+<!--            android:layout_marginTop="45dp"-->
+<!--            />-->
+    </RelativeLayout>
+
 </RelativeLayout>

@@ -14,6 +14,7 @@ import cn.edu.cdut.jiemo.diary.diaryWrite;
 
 public class add extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

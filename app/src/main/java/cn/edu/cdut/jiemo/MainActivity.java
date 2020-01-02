@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,10 +15,15 @@ import com.zhy.changeskin.SkinManager;
 
 import cn.edu.cdut.jiemo.diary.SectionsPagerAdapter;
 import cn.edu.cdut.jiemo.mine.mine;
+import cn.edu.cdut.jiemo.mine.securityPwd;
+import cn.edu.cdut.jiemo.mine.securitySetting;
 import cn.edu.cdut.jiemo.schedule.addplan;
-
+import cn.edu.cdut.jiemo.mine.inputSecuritypwd;
 public class MainActivity extends AppCompatActivity implements OnClickListener{
 
+    SharedPreferences securityState;
+    Boolean state;
+    Boolean isOK;
     private ScrollView scrollView = null;
 
     @Override
@@ -27,6 +33,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
         SkinManager.getInstance().register(this);
         setContentView(R.layout.activity_main);
 
+        securityState=getSharedPreferences("securityState",MODE_PRIVATE);
+        state=securityState.getBoolean("securityState",false);
+        isOK=securityState.getBoolean("isOK",false);
+
+        if(state==true && isOK==false){
+            Intent intent = new Intent(MainActivity.this, inputSecuritypwd.class);
+            startActivity(intent);
+        }
 //        //滚动效果
 //        scrollView = (ScrollView) findViewById(R.id.id_scrollView);
 //        scrollView.setVerticalScrollBarEnabled(false);
@@ -107,7 +121,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 //            }
 //        });
 
-
+        //将是否验证成功设为否
+        SharedPreferences.Editor editor2=securityState.edit();
+        editor2.putBoolean("isOK",false);
+        editor2.commit();
     }
 
     //    点击加号进入跳转界面

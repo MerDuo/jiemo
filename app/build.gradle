@@ -63,10 +63,7 @@ dependencies {
 
 //    api 'com.dou361.dialogui:jjdxm-dialogui:1.0.3'
 
-    compile ('com.zhy:changeskin:4.0.2'){
+    compile('com.zhy:changeskin:4.0.2') {
         exclude group: 'com.android.support', module: 'support-v4'
     }
 }
-
-
-

@@ -3,12 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#ffffff"
     >
 
     <ImageView
         android:layout_width="300px"
         android:layout_height="300px"
-        android:src="@drawable/user_image"
+        android:src="@drawable/jiemo"
         android:layout_gravity="center"></ImageView>
     <RelativeLayout
         android:layout_width="match_parent"

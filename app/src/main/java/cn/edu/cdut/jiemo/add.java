@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.zhy.changeskin.SkinManager;
 
 import cn.edu.cdut.jiemo.diary.diaryWrite;
-
+import cn.edu.cdut.jiemo.schedule.addplan;
 public class add extends AppCompatActivity {
 
 
@@ -26,7 +26,7 @@ public class add extends AppCompatActivity {
     public void onClick(View v){
         int id = v.getId();
         switch (id){
-            case R.id.diaryImg:
+            case R.id.diaryImg1:
                 Intent intent1 = new Intent();
                 intent1.setClass(add.this, diaryWrite.class);
                 startActivity(intent1);
@@ -34,7 +34,14 @@ public class add extends AppCompatActivity {
                 Intent intent2 = new Intent();
                 intent2.setClass(add.this, diaryWrite.class);
                 startActivity(intent2);
-
+//            case R.id.calImg1:
+//                Intent intent3 = new Intent();
+//                intent3.setClass(add.this, addplan.class);
+//                startActivity(intent3);
+//            case R.id.calTxt:
+//                Intent intent4 = new Intent();
+//                intent4.setClass(add.this, addplan.class);
+//                startActivity(intent4);
         }
     }
     public void returnimg(View v){

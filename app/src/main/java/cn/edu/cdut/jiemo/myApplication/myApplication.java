@@ -2,7 +2,10 @@ package cn.edu.cdut.jiemo.myApplication;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.multidex.MultiDex;
+//import android.support.multidex.MultiDex;
+
+
+import androidx.multidex.MultiDex;
 
 import com.zhy.changeskin.SkinManager;
 

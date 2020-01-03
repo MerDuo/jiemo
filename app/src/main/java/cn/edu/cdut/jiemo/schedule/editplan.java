@@ -169,6 +169,7 @@ public class editplan extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         mySQLiteOpenHelper.deleteSchedele(id);
                         Intent intent = new Intent(editplan.this, MainActivity.class);
+                        intent.putExtra("page",1);
                         startActivity(intent);
                     }
                 });
@@ -212,6 +213,7 @@ public class editplan extends AppCompatActivity {
 //
 //
 //                    intent.putExtras(bundle);
+                    intent.putExtra("page",1);
                     startActivity(intent);
                 }
                 else{

@@ -12,7 +12,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
         <provider android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.cameraalbumtest.fileprovider"
             android:exported="false"
@@ -24,10 +23,9 @@
         <activity android:name=".login">
 
         </activity>
-=======
+
         <activity android:name=".securityPwd"></activity>
         <activity android:name=".login"></activity>
->>>>>>> 064cf281bbb622e83f4e564bba78fae9cddd2915
         <activity android:name=".register" />
         <activity android:name=".schedule.addplan" />
         <activity android:name=".schedule.editplan" />

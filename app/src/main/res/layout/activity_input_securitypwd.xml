@@ -8,7 +8,7 @@
     <ImageView
         android:layout_width="300px"
         android:layout_height="300px"
-        android:src="@drawable/jiemo"
+        android:src="@drawable/user_image"
         android:layout_gravity="center"></ImageView>
     <RelativeLayout
         android:layout_width="match_parent"

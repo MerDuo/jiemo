@@ -19,6 +19,7 @@ public class sqLite extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
+        Log.d("aaa","databaseoncreate");
         //开启外键约束
         super.onOpen(sqLiteDatabase);
         if(sqLiteDatabase.isReadOnly()){
@@ -35,7 +36,8 @@ public class sqLite extends SQLiteOpenHelper {
                 "age integer,"+
                 "theme text,"+
                 "safeps text,"+
-                "signature text)";
+                "signature text," +
+                "userimage text"+ ")";
         sqLiteDatabase.execSQL(sql1);
 
         //创建手账表

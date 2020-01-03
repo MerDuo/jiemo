@@ -22,6 +22,7 @@ public class mineUserDao {
     private String theme;
     private String safeps;
     private  String signature;
+    private String userImage;
 
     sqLite helper;
     SQLiteDatabase db;
@@ -62,11 +63,13 @@ public class mineUserDao {
         String utheme=cours.getString(cours.getColumnIndex("theme"));
         String usafeps=cours.getString(cours.getColumnIndex("safeps"));
         String usignature=cours.getString(cours.getColumnIndex("signature"));
+        String userImage=cours.getString(cours.getColumnIndex("userimage"));
         user.setAge(uage);
         user.setSex(usex);
         user.setTheme(utheme);
         user.setSafeps(usafeps);
         user.setSignature(usignature);
+        user.setUserImage(userImage);
         return true;
     }
     //清除数据
@@ -77,6 +80,7 @@ public class mineUserDao {
         user.setSafeps(null);
         user.setSex(null);
         user.setSignature(null);
+        user.setUserImage(null);
         user.setTheme(null);
     }
 
@@ -137,6 +141,14 @@ public class mineUserDao {
         db.update("users",values,"account=?",new String[]{user.getUserName()});
         return true;
     }
+    //改头像
+    public Boolean changeUserImage(String newUserImage){
+        user.setUserImage(newUserImage);
+        ContentValues values=new ContentValues();
+        values.put("userimage",newUserImage);
+        db.update("users",values,"account=?",new String[]{user.getUserName()});
+        return true;
+    }
 
 
 //setter和getter
@@ -194,4 +206,12 @@ public class mineUserDao {
     public void setSignature(String signature) {
         this.signature = signature;
     }
+    public String getUserImage() {
+        return userImage;
+    }
+
+    public void setUserImage(String userImage) {
+        this.userImage = userImage;
+    }
+
 }

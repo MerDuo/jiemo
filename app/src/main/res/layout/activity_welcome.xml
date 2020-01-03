@@ -5,12 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".welcome">
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="今天你记了么"
-    android:textSize="30sp"
-    android:layout_gravity="center"
-    android:gravity="center"
-    android:layout_weight="1"></TextView>
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/welcome"></ImageView>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/welcometext"
+            android:layout_marginTop="-200dp"
+            android:gravity="right"
+            android:layout_gravity="center"
+            android:layout_weight="1"></ImageView>
+    </FrameLayout>
+
+
 </LinearLayout>

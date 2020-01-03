@@ -29,6 +29,7 @@ public class login extends AppCompatActivity{
     private Button btn_login;//登录按钮
     private String userName,psw,spPsw;//获取的用户名，密码，加密密码
     private EditText et_user_name,et_psw;//编辑框
+
     //返回键
     private ImageView back;
     @Override
@@ -44,21 +45,21 @@ public class login extends AppCompatActivity{
 
     }
     private void init() {
-        back = findViewById(R.id.btnPtev);
-        tv_register = findViewById(R.id.register);
+//        back = findViewById(R.id.btnPtev);
+        tv_register = findViewById(R.id.top3_text_r);
         //tv_find_psw=findViewById(R.id.tv_find_psw);
         btn_login = findViewById(R.id.loginbtn);
         et_user_name = findViewById(R.id.phone);
         et_psw = findViewById(R.id.password);
         mySQLiteOpenHelper = new sqLite(this);
         myDatabase = mySQLiteOpenHelper.getWritableDatabase();
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //返回键
-                login.this.finish();
-            }
-        });
+//        back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //返回键
+//                login.this.finish();
+//            }
+//        });
         tv_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,7 +93,7 @@ public class login extends AppCompatActivity{
                 }else if(!mySQLiteOpenHelper.hasUser(userName)) {
                     Toast.makeText(login.this, "用户名不存在", Toast.LENGTH_SHORT).show();
                 }else if(mySQLiteOpenHelper.login(userName,md5Psw)){
-                    //一致登录成功
+                    //一致登录成功qqqwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss66ssssssssssssssssssssssssss
                     Toast.makeText(login.this, "登录成功", Toast.LENGTH_SHORT).show();
                     //初始化用户数据Name
                     getUser().initUser(getApplicationContext(),userName);
@@ -101,8 +102,9 @@ public class login extends AppCompatActivity{
                         SkinManager.getInstance().changeSkin(getUser().getTheme());
                         Log.d("aaa","theme"+getUser().getTheme());
                     }
+                    int uid=mySQLiteOpenHelper.getUid(userName);
                     //保存登录状态，在界面保存登录的用户名 定义个方法 saveLoginStatus boolean 状态 , userName 用户名;
-                    saveLoginStatus(true, userName);
+                    saveLoginStatus(true, userName,uid);
                     //登录成功后关闭此页面进入主页
                     Intent data=new Intent();
                     //datad.putExtra( ); name , value ;
@@ -117,7 +119,7 @@ public class login extends AppCompatActivity{
                     return;
                 }else{
                     Toast.makeText(login.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
-                    saveLoginStatus(true, userName);
+                    falseLogin(false);
                     return;
                 }
             }
@@ -139,7 +141,7 @@ public class login extends AppCompatActivity{
     /**
      *保存登录状态和登录用户名到SharedPreferences中
      */
-    private void saveLoginStatus(boolean status,String userName){
+    private void saveLoginStatus(boolean status,String userName,int id){
         //saveLoginStatus(true, userName);
         //loginInfo表示文件名  SharedPreferences sp=getSharedPreferences("loginInfo", MODE_PRIVATE);
         SharedPreferences sp=getSharedPreferences("loginInfo", MODE_PRIVATE);
@@ -149,6 +151,7 @@ public class login extends AppCompatActivity{
         editor.putBoolean("isLogin", status);
         //存入登录状态时的用户名
         editor.putString("loginUserName", userName);
+        editor.putInt("userId",id);
         //提交修改
         editor.commit();
     }

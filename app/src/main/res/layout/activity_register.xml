@@ -2,34 +2,41 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     >
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="@color/green"
-        >
-        <ImageView
-            android:id="@+id/btnPtev"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/left"
-            android:gravity="center"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"></ImageView>
 
-        <TextView
-            android:id="@+id/logintitle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="注册"
-            android:gravity="center"
-            android:textColor="@color/login"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="-40dp"
-            ></TextView>
-    </LinearLayout>
+    <cn.edu.cdut.jiemo.diary.Top2View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:top2_text="注册"
+        app:top2_color="#778899"/>
+    <!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="80dp"-->
+<!--        android:background="@color/green"-->
+<!--        >-->
+<!--        <ImageView-->
+<!--            android:id="@+id/btnPtev"-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:src="@drawable/left"-->
+<!--            android:gravity="center"-->
+<!--            android:layout_gravity="center_vertical"-->
+<!--            android:layout_marginLeft="10dp"></ImageView>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/logintitle"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:text="注册"-->
+<!--            android:gravity="center"-->
+<!--            android:textColor="@color/login"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_marginLeft="-40dp"-->
+<!--            ></TextView>-->
+<!--    </LinearLayout>-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,18 +47,18 @@
             android:layout_alignLeft="@id/phone"
             android:layout_marginLeft="10dp"
             android:src="@drawable/user"
-            ></ImageView>
+            />
         <EditText
             android:id="@+id/phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="设置用户名"
             android:gravity="center"
-            android:textSize="20sp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:textColor="@color/hui"
-            ></EditText>
+            android:textSize="18sp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:textColor="@color/black"
+            />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -63,20 +70,19 @@
             android:layout_alignLeft="@id/password"
             android:layout_marginLeft="10dp"
             android:src="@drawable/password"
-            ></ImageView>
+            />
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="设置密码"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:gravity="center"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:textColor="@color/hui"
-            android:inputType="textPassword">
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:textColor="@color/black"
+            android:inputType="textPassword"/>
 
-        </EditText>
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -88,18 +94,18 @@
             android:layout_alignLeft="@id/password2"
             android:layout_marginLeft="10dp"
             android:src="@drawable/password"
-            ></ImageView>
+            />
         <EditText
             android:id="@+id/password2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="再次输入密码"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:gravity="center"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:textColor="@color/hui"
-            android:inputType="textPassword"></EditText>
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:textColor="@color/black"
+            android:inputType="textPassword"/>
     </RelativeLayout>
     <Button
         android:id="@+id/regisbtn"
@@ -113,5 +119,5 @@
         android:gravity="center"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
-        ></Button>
+        />
 </LinearLayout>

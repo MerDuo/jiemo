@@ -1,64 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="180dp"
         android:background="@color/green"
         android:orientation="vertical"
         >
-        <RelativeLayout
+        <cn.edu.cdut.jiemo.diary.Top3View
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            >
-            <ImageView
-                android:id="@+id/btnPtev"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/left"
-                android:layout_centerVertical="true"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="10dp"></ImageView>
+            android:layout_height="wrap_content"
+            app:top3_text="登录"
+            app:top3_color="#778899"
+            app:top3_text_r="注册"
+            app:top3_color_r="#778899"/>
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            >-->
+<!--            <ImageView-->
+<!--                android:id="@+id/btnPtev"-->
+<!--                android:layout_width="40dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:src="@drawable/left"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:layout_alignParentLeft="true"-->
+<!--                android:layout_marginLeft="10dp"></ImageView>-->
 
-            <TextView
-                android:id="@+id/logintitle"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_toLeftOf="@id/register"
-                android:layout_toRightOf="@id/btnPtev"
-                android:text="登录"
-                android:textColor="@color/login"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                ></TextView>
-
-            <TextView
-                android:id="@+id/register"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="注册"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:textColor="@color/register"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"></TextView>
-        </RelativeLayout>
-    </LinearLayout>
+<!--            <TextView-->
+<!--                android:id="@+id/register"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:text="注册"-->
+<!--                android:textSize="20sp"-->
+<!--                android:gravity="center"-->
+<!--                android:textColor="@color/register"-->
+<!--                android:layout_alignParentRight="true"-->
+<!--                android:layout_marginRight="20dp"></TextView>-->
+<!--        </RelativeLayout>-->
+    </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="-80dp">
+        android:layout_height="80dp"
+        android:layout_marginTop="-70dp">
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:src="@drawable/toux"
             android:layout_centerInParent="true"
-            ></ImageView>
+            />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -69,19 +64,17 @@
             android:layout_height="30dp"
             android:layout_alignLeft="@id/phone"
             android:layout_marginLeft="10dp"
-            android:src="@drawable/user"
-            ></ImageView>
+            android:src="@drawable/user"/>
         <EditText
             android:id="@+id/phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="用户名"
             android:gravity="center"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-            android:textColor="@color/hui"
-            ></EditText>
+            android:textColor="@color/black" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -92,19 +85,18 @@
             android:layout_height="30dp"
             android:layout_alignLeft="@id/password"
             android:layout_marginLeft="10dp"
-            android:src="@drawable/password"
-            ></ImageView>
+            android:src="@drawable/password" />
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="密码"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:gravity="center"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:inputType="textPassword"
-            android:textColor="@color/hui"></EditText>
+            android:textColor="@color/black"/>
     </RelativeLayout>
     <Button
         android:id="@+id/loginbtn"
@@ -117,6 +109,5 @@
         android:background="@drawable/button"
         android:gravity="center"
         android:layout_gravity="center"
-        android:layout_marginTop="40dp"
-        ></Button>
+        android:layout_marginTop="40dp" />
 </LinearLayout>

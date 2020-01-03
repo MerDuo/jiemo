@@ -5,9 +5,11 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -43,6 +45,10 @@ public class addplan extends AppCompatActivity {
     private sqLite mySQLiteOpenHelper;
     private SQLiteDatabase myDatabase;
     private int switchday;
+    String date;
+    Boolean isLogin;
+    SharedPreferences pref;
+    int uid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +72,9 @@ public class addplan extends AppCompatActivity {
         addbtn =findViewById(R.id.add);
         mySQLiteOpenHelper = new sqLite(this);
         myDatabase = mySQLiteOpenHelper.getWritableDatabase();
+        pref=getSharedPreferences("loginInfo",MODE_PRIVATE);
+        isLogin=pref.getBoolean("isLogin",false);
+        uid = pref.getInt("userId",1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,10 +82,14 @@ public class addplan extends AppCompatActivity {
                 addplan.this.finish();
             }
         });
+        //获取传过来的date
+        date= getIntent().getStringExtra("date");
+        //Log.i("数据！！！",date);
         //进入添加日程界面显示当前的日期
+        mday.setText(date);
         Calendar today = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        mday.setText(sdf.format(today.getTime()));//月份的展示
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-d");
+        //mday.setText(sdf.format(today.getTime()));//月份的展示
         SimpleDateFormat sdf2 = new SimpleDateFormat("hh:mm");
         time.setText(sdf2.format(today.getTime()));
         check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -85,9 +98,11 @@ public class addplan extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked) {
                     Calendar today = Calendar.getInstance();
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                    mday.setText(sdf.format(today.getTime()));//月份的展示
-                    time.setText(sdf.format(today.getTime()));
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-d");
+                    mday.setText(date);//月份的展示
+                    time.setText(date);
+                    //mday.setText(sdf.format(today.getTime()));//月份的展示
+                    //time.setText(sdf.format(today.getTime()));
                 } else {
                     mday.setText(" ");
                     time.setText(" ");
@@ -116,6 +131,11 @@ public class addplan extends AppCompatActivity {
                     scheduleBean.check = "false";
                     scheduleBean.time = ti;
                     scheduleBean.day = t;
+                    if(isLogin) {
+                        scheduleBean.uid = uid;
+                    }else{
+                        scheduleBean.uid = 1;
+                    }
                     mySQLiteOpenHelper.insert(scheduleBean);
                     //-------------------在main中添加---------------
                     Intent intent = new Intent(addplan.this, MainActivity.class);
@@ -138,7 +158,7 @@ public class addplan extends AppCompatActivity {
     }
     //选择日期
     public void setDay() {
-        final SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
+        final SimpleDateFormat sdf = new SimpleDateFormat("YYYY-M-d");
 
         swiday.setOnClickListener(new View.OnClickListener() {
             @Override

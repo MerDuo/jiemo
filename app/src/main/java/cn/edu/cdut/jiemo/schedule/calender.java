@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -36,8 +37,11 @@ public class calender extends AppCompatActivity {
     private SQLiteDatabase myDatabase;
     private List<scheduleBean> msBeanList;
     private ListView slist;
-    private String dateToday;//用于记录今天的日期
+    private static String dateToday;//用于记录今天的日期
     private String switchDay;//用于记录选择的日期
+    Boolean isLogin;
+    SharedPreferences pref;
+    int uid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,12 +53,18 @@ public class calender extends AppCompatActivity {
         setContentView(R.layout.activity_calender);
 //        Toolbar toolbar = findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
-
+//判断用户是否登录
+        pref=getSharedPreferences("loginInfo",MODE_PRIVATE);
+        isLogin=pref.getBoolean("isLogin",false);
+        uid = pref.getInt("userId",0);
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.i("数据！！",dateToday);
                 Intent intent = new Intent(calender.this,addplan.class);
+                intent.putExtra("date",dateToday);
+
 //                Intent intent = new Intent(MainActivity.this,addplan.class);
                 startActivity(intent);
             }
@@ -80,54 +90,52 @@ public class calender extends AppCompatActivity {
         context = this;
         calendar = findViewById(R.id.calendar);
         calendar.setOnDateChangeListener(mySelectDate);
-//        slist = findViewById(R.id.slist);
-//        msBeanList = new ArrayList<>();
-//        msBeanList.clear();
-//        slist.setAdapter(new scheduleAdapter(this,msBeanList));
-        //显示今天的日程
+        //获得今天的日程
         Calendar time = Calendar.getInstance();
         int year = time.get(Calendar.YEAR);
         int month = time.get(Calendar.MONTH)+1;//注意要+1，0表示1月份
         int day = time.get(Calendar.DAY_OF_MONTH);
         dateToday = year+"-"+month+"-"+day;
-
-        Bundle receive = this.getIntent().getExtras();
-
-        if(receive != null) {
-            String sche = receive.getString("scheduleDetail");
-            String t = receive.getString("day");
-            String time2 = receive.getString("time");
-            int switchday = receive.getInt("switchday");
-            ContentValues values = new ContentValues();
-            scheduleBean scheduleBean = new scheduleBean();
-            scheduleBean.plan = sche;
-            scheduleBean.check = "false";
-            scheduleBean.time = time2;
-            scheduleBean.day = t;
-            mySQLiteOpenHelper.insert(scheduleBean);
-            //dateToday = t;
-
-            //showPlan(t);
-            //---------------------
-            //添加确认添加后返回页面默认显示添加的日期
-
-        }
-
-        if (this.getIntent().getStringExtra("day") != null){
-            int ooid = this.getIntent().getIntExtra("id",0);
-            String ooplan = this.getIntent().getStringExtra("sche");
-            String ooday = this.getIntent().getStringExtra("day");
-            String ootime = this.getIntent().getStringExtra("time");
-            String oocheck = this.getIntent().getStringExtra("check");
-            ContentValues values = new ContentValues();
-            scheduleBean scheduleBean = new scheduleBean();
-            scheduleBean.plan = ooplan;
-            scheduleBean.check = oocheck;
-            scheduleBean.time = ootime;
-            scheduleBean.day = ooday;
-            mySQLiteOpenHelper.update(ooid,scheduleBean);
-        }
-
+        showPlan(dateToday);
+//==================添加====================================
+//        Bundle receive = this.getIntent().getExtras();
+//
+//        if(receive != null) {
+//            String sche = receive.getString("scheduleDetail");
+//            String t = receive.getString("day");
+//            String time2 = receive.getString("time");
+//            int switchday = receive.getInt("switchday");
+//            ContentValues values = new ContentValues();
+//            scheduleBean scheduleBean = new scheduleBean();
+//            scheduleBean.plan = sche;
+//            scheduleBean.check = "false";
+//            scheduleBean.time = time2;
+//            scheduleBean.day = t;
+//            mySQLiteOpenHelper.insert(scheduleBean);
+//            //dateToday = t;
+//
+//            //showPlan(t);
+//            //---------------------
+//            //添加确认添加后返回页面默认显示添加的日期
+//
+//        }
+ //       ================================================================///
+//===============================编辑功能==================================
+//        if (this.getIntent().getStringExtra("day") != null){
+//            int ooid = this.getIntent().getIntExtra("id",0);
+//            String ooplan = this.getIntent().getStringExtra("sche");
+//            String ooday = this.getIntent().getStringExtra("day");
+//            String ootime = this.getIntent().getStringExtra("time");
+//            String oocheck = this.getIntent().getStringExtra("check");
+//            ContentValues values = new ContentValues();
+//            scheduleBean scheduleBean = new scheduleBean();
+//            scheduleBean.plan = ooplan;
+//            scheduleBean.check = oocheck;
+//            scheduleBean.time = ootime;
+//            scheduleBean.day = ooday;
+//            mySQLiteOpenHelper.update(ooid,scheduleBean);
+//        }
+//==========================================================================================
 
         //-----------------------------
         //初始添加数据
@@ -139,7 +147,6 @@ public class calender extends AppCompatActivity {
 //            bean.time = "11:11";
 //            mySQLiteOpenHelper.insert(bean);
 //        }
-        showPlan(dateToday);
 
         //测试数据是否加入数据库+获取某天的是否正确
         //---------------------------------
@@ -160,8 +167,6 @@ public class calender extends AppCompatActivity {
             dateToday = year+"-"+(month+1)+"-"+dayOfMonth;
             Toast.makeText(context, "你选择了:"+dateToday, Toast.LENGTH_SHORT).show();
             showPlan(dateToday);
-
-
         }
     };
 
@@ -172,9 +177,13 @@ public class calender extends AppCompatActivity {
         context = this;
         scheduleAdapter adapter = new scheduleAdapter(this,msBeanList);
         slist.setAdapter(adapter);
-
+       final Cursor cursor;
         //     Log.i("数据：",data);
-        final Cursor cursor = mySQLiteOpenHelper.getOneday(data);
+        if(isLogin){
+            cursor = mySQLiteOpenHelper.getLogOneday(data,uid);
+        }else {
+            cursor = mySQLiteOpenHelper.getOneday(data);
+        }
         adapter.notifyDataSetChanged();
         msBeanList.clear();
         while(cursor.moveToNext()){
@@ -183,6 +192,7 @@ public class calender extends AppCompatActivity {
             scheduleBean.plan = cursor.getString(cursor.getColumnIndex("schedule"));
             scheduleBean.check = cursor.getString(cursor.getColumnIndex("checkd"));
             scheduleBean.time = cursor.getString(cursor.getColumnIndex("time"));
+            scheduleBean.uid = uid;
 //            Log.i("数据数据",scheduleBean.plan.toString());
             msBeanList.add(scheduleBean);
         }

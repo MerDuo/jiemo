@@ -91,8 +91,8 @@ public class editplan extends AppCompatActivity {
 
         if(receive != null) {
             String sche = receive.getString("oplan");
-            String t = receive.getString("oday");
-            String time2 = receive.getString("otime");
+            final String t = receive.getString("oday");
+            final String time2 = receive.getString("otime");
             String ocheck = receive.getString("ocheck");
             Log.e("time",time2);
             id =  receive.getInt("dbid");
@@ -106,30 +106,53 @@ public class editplan extends AppCompatActivity {
             }else{
                 check.setChecked(false);
             }
+            check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(isChecked) {
+//                    Calendar today = Calendar.getInstance();
+//                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-d");
+//                    mday.setText(sdf.format(today.getTime()));//月份的展示
+//                    time.setText(sdf.format(today.getTime()));
+                        mday.setText(t);
+                        time.setText(t);
+                        checkStr="true";
+                    } else {
+                        mday.setText(t);
+                        time.setText(time2);
+                        checkStr = "false";
+                        //非选中时 do some thing
+                        //setTime();
+                    }
+
+                }
+            });
         }
 
 
-        check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked) {
-                    Calendar today = Calendar.getInstance();
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                    mday.setText(sdf.format(today.getTime()));//月份的展示
-                    time.setText(sdf.format(today.getTime()));
-                    checkStr="true";
-                } else {
-                    mday.setText(" ");
-                    time.setText(" ");
-                    checkStr = "false";
-                    //非选中时 do some thing
-                    //setTime();
-                }
-
-            }
-        });
+//        check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if(isChecked) {
+////                    Calendar today = Calendar.getInstance();
+////                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-d");
+////                    mday.setText(sdf.format(today.getTime()));//月份的展示
+////                    time.setText(sdf.format(today.getTime()));
+//                    mday.setText(t);
+//
+//                    checkStr="true";
+//                } else {
+//                    mday.setText(" ");
+//                    time.setText(" ");
+//                    checkStr = "false";
+//                    //非选中时 do some thing
+//                    //setTime();
+//                }
+//
+//            }
+//        });
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

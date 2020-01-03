@@ -3,6 +3,7 @@ package cn.edu.cdut.jiemo.fragment;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -39,6 +40,8 @@ import cn.edu.cdut.jiemo.schedule.scheduleAdapter;
 import cn.edu.cdut.jiemo.schedule.scheduleBean;
 import cn.edu.cdut.jiemo.schedule.sqLite;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class calenderFragment extends Fragment {
     FloatingActionButton fab;
     CalendarView calendar;
@@ -49,7 +52,9 @@ public class calenderFragment extends Fragment {
     private ListView slist;
     private String dateToday;//用于记录今天的日期
     private String switchDay;//用于记录选择的日期
-
+    Boolean isLogin;
+    SharedPreferences pref;
+    int uid;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -63,6 +68,7 @@ public class calenderFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(),addplan.class);
+                intent.putExtra("date",dateToday);
 //                Intent intent = new Intent(MainActivity.this,addplan.class);
                 startActivity(intent);
             }
@@ -85,19 +91,18 @@ public class calenderFragment extends Fragment {
     private void initView() {
         mySQLiteOpenHelper = new sqLite(getContext());
         myDatabase = mySQLiteOpenHelper.getWritableDatabase();
+        pref=getActivity().getSharedPreferences("loginInfo",MODE_PRIVATE);
+        isLogin=pref.getBoolean("isLogin",false);
+        uid = pref.getInt("userId",0);
 
-
-//        slist = findViewById(R.id.slist);
-//        msBeanList = new ArrayList<>();
-//        msBeanList.clear();
-//        slist.setAdapter(new scheduleAdapter(this,msBeanList));
         //显示今天的日程
         Calendar time = Calendar.getInstance();
         int year = time.get(Calendar.YEAR);
         int month = time.get(Calendar.MONTH)+1;//注意要+1，0表示1月份
         int day = time.get(Calendar.DAY_OF_MONTH);
         dateToday = year+"-"+month+"-"+day;
-
+        showPlan(dateToday);
+        //====================addPlan==============================
 //        Bundle receive = getActivity().getIntent().getExtras();
 //
 //        if(receive != null) {
@@ -119,7 +124,7 @@ public class calenderFragment extends Fragment {
             //添加确认添加后返回页面默认显示添加的日期
 
 //        }
-
+//================================editPlan==================================
 //        if (getActivity().getIntent().getStringExtra("day") != null){
 //            Log.e("数据：","aaaaaaaa");
 //            int ooid = getActivity().getIntent().getIntExtra("id",0);
@@ -135,7 +140,7 @@ public class calenderFragment extends Fragment {
 //            scheduleBean.day = ooday;
 //            mySQLiteOpenHelper.update(ooid,scheduleBean);
 //        }
-
+//=====================================================================================
 
         //-----------------------------
         //初始添加数据
@@ -147,8 +152,6 @@ public class calenderFragment extends Fragment {
 //            bean.time = "11:11";
 //            mySQLiteOpenHelper.insert(bean);
 //        }
-        showPlan(dateToday);
-
         //测试数据是否加入数据库+获取某天的是否正确
         //---------------------------------
 //        Cursor cursor = mySQLiteOpenHelper.getOneday(dateToday);
@@ -169,7 +172,6 @@ public class calenderFragment extends Fragment {
             Toast.makeText(context, "你选择了:"+dateToday, Toast.LENGTH_SHORT).show();
             showPlan(dateToday);
 
-
         }
     };
 
@@ -182,7 +184,13 @@ public class calenderFragment extends Fragment {
         slist.setAdapter(adapter);
 
          Log.i("数据：",data);
-        final Cursor cursor = mySQLiteOpenHelper.getOneday(data);
+        final Cursor cursor;
+        //     Log.i("数据：",data);
+        if(isLogin){
+            cursor = mySQLiteOpenHelper.getLogOneday(data,uid);
+        }else {
+            cursor = mySQLiteOpenHelper.getOneday(data);
+        }
         adapter.notifyDataSetChanged();
         msBeanList.clear();
         while(cursor.moveToNext()){
@@ -191,6 +199,7 @@ public class calenderFragment extends Fragment {
             scheduleBean.plan = cursor.getString(cursor.getColumnIndex("schedule"));
             scheduleBean.check = cursor.getString(cursor.getColumnIndex("checkd"));
             scheduleBean.time = cursor.getString(cursor.getColumnIndex("time"));
+            scheduleBean.day = cursor.getString(cursor.getColumnIndex("day"));
 //            Log.i("数据数据",scheduleBean.plan.toString());
             msBeanList.add(scheduleBean);
         }

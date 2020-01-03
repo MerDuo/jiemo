@@ -87,6 +87,7 @@ public class sqLite extends SQLiteOpenHelper {
         cv.put("schedule",scheduleBean.plan);
         cv.put("day",scheduleBean.day);
         cv.put("time",scheduleBean.time);
+        cv.put("uid",scheduleBean.uid);
         database.insert("schedules",null,cv);
         Log.i("成功插入数据","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     }
@@ -94,11 +95,19 @@ public class sqLite extends SQLiteOpenHelper {
         //SQLiteDatabase database = getWritableDatabase();
         return database.query("schedules",null,null,null,null,null,null);
     }
+    //登录后查询某天日程
+    public Cursor getLogOneday(String day,int id){
+        //SQLiteDatabase database = getWritableDatabase();
+        String sql = "select * from schedules where day=? and uid=?";
+        Cursor cursor = database.rawQuery(sql, new String[] {day, Integer.toString(id)});
+        Log.i("查询某登录后某天日程","bbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
+        return cursor;
+    }
+    //登录前日程
     public Cursor getOneday(String day){
         //SQLiteDatabase database = getWritableDatabase();
         Log.i("查询某天日程","bbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
-        return database.query("schedules",null,"day=?",new String[]{day},null,null,null);
-
+        return database.query("schedules",null,"day=? and uid=?",new String[]{day,Integer.toString(1)},null,null,null);
     }
     public void deleteAll(){
         //SQLiteDatabase database = getWritableDatabase();
@@ -131,6 +140,21 @@ public class sqLite extends SQLiteOpenHelper {
         else{
             return false;
         }
+    }
+//初始化一个用户
+public void addUser(String name,String psw){//注册
+        ContentValues cv = new ContentValues();//键值对的集合
+        cv.put("account", name);
+        cv.put("password",psw);
+        database.insert("users", null, cv);
+    }
+    //==========================================
+    public int getUid(String name){
+        Cursor cursor = database.query("users",null,"account=?",new String[]{name},null,null,null);
+        if(cursor.moveToFirst()){
+            return cursor.getInt(1);
+        }
+        return 0;
     }
     public Boolean hasUser(String name){//判断是否有该用户名
         Cursor cursor = database.query("users",null,"account=?",new String[]{name},null,null,null);

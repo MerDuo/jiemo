@@ -1,9 +1,12 @@
 package cn.edu.cdut.jiemo.diary;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -50,10 +53,29 @@ public class diaryWrite extends Activity implements View.OnClickListener, PopupM
 
     sqLite mySQLiteOpenHelper;
     SQLiteDatabase myDatabase;
+    int uid = 0;
+    String username;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //    SharedPreferences sharedPreferences=getSharedPreferences("loginInfo", MODE_PRIVATE);
+//    int uid = sharedPreferences.getInt("userId",0);
+//        SharedPreferences sharedPreferences = getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+//        //uid = sharedPreferences.getInt("userId",0);
+//        boolean loginFlag = sharedPreferences.getBoolean("isLogin",false);
+//        if (loginFlag == true)
+//            uid = sharedPreferences.getInt("userId",0);
+//    int uid = 1;
+        SharedPreferences sharedPreferences = getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+        Boolean isLogin=sharedPreferences.getBoolean("isLogin",false);
+        int uid = sharedPreferences.getInt("userId",1);
+        username = sharedPreferences.getString("loginUserName","");
+        Log.e("login2","status"+isLogin);
+        Log.e("login2","uid:"+username);
+
         setContentView(R.layout.activity_diary_write);
 
         // 数据库
@@ -74,7 +96,8 @@ public class diaryWrite extends Activity implements View.OnClickListener, PopupM
         String title = intent.getStringExtra("title");
         if(title!=null) {
             Log.e("title:", title);
-            Cursor cursor = mySQLiteOpenHelper.getDiary(title);
+//            Cursor cursor = mySQLiteOpenHelper.getDiary(title,uid);
+            Cursor cursor = mySQLiteOpenHelper.getDiary(title,username);
             while (cursor.moveToNext()) {
 //                Log.e("text:", cursor.getString(cursor.getColumnIndex("fontcolor")));
                 Log.e("bcg——get","为"+cursor.getInt(cursor.getColumnIndex("background")));
@@ -139,9 +162,10 @@ public class diaryWrite extends Activity implements View.OnClickListener, PopupM
         int id = v.getId();
         switch (id){
             case R.id.returnbtn:
-                final Intent intent = new Intent();
-                intent.setClass(diaryWrite.this, MainActivity.class);
-                startActivity(intent);
+//                final Intent intent = new Intent();
+//                intent.setClass(diaryWrite.this, MainActivity.class);
+//                startActivity(intent);
+                finish();
                 break;
             case R.id.del:
                 diary.setText("");
@@ -206,7 +230,7 @@ public class diaryWrite extends Activity implements View.OnClickListener, PopupM
 
                                 int flag = getIntent().getIntExtra("updateflag",0);
                                 if (flag == 0){
-                                    Cursor cursor = mySQLiteOpenHelper.getDiary(diarytitle.getText().toString());
+                                    Cursor cursor = mySQLiteOpenHelper.getDiary(diarytitle.getText().toString(),username);
                                     int check = 0;
                                     while (cursor.moveToNext())
                                         check++;
@@ -223,8 +247,9 @@ public class diaryWrite extends Activity implements View.OnClickListener, PopupM
                                 // 得到日期和时间
                                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                                 String date = formatter.format(new Date());
-                                SimpleDateFormat formatter2 = new SimpleDateFormat("HH:MM");
+                                SimpleDateFormat formatter2 = new SimpleDateFormat("HH:mm");
                                 String time = formatter2.format(new Date());
+                                //String time = "15:30";
 
                                 // 得到内容
                                 diarytitle = findViewById(R.id.diarytitle);
@@ -251,6 +276,7 @@ public class diaryWrite extends Activity implements View.OnClickListener, PopupM
                                 diaryBean.diarytime = db_time;
                                 diaryBean.diarycategory = db_category;
                                 diaryBean.background = db_background;
+                                diaryBean.uname = username;
 
 //                                Cursor cursor = mySQLiteOpenHelper.getDiary(db_diarytitle);
 //                                int check = 0;
@@ -263,7 +289,7 @@ public class diaryWrite extends Activity implements View.OnClickListener, PopupM
                                 if (flag==1) {
 //                                    mySQLiteOpenHelper.deleteDiary(getIntent().getStringExtra("title"));
                                     Log.e("delete","为"+db_background);
-                                    Cursor cursor = mySQLiteOpenHelper.getDiary(diarytitle.getText().toString());
+                                    Cursor cursor = mySQLiteOpenHelper.getDiary(diarytitle.getText().toString(),username);
                                     Log.e("delete","为"+db_background);
                                     int check = 0;
                                     while (cursor.moveToNext())
@@ -272,8 +298,8 @@ public class diaryWrite extends Activity implements View.OnClickListener, PopupM
                                         Toast.makeText(diaryWrite.this,"标题不能重复",Toast.LENGTH_SHORT).show();
                                         return;
                                     }
-                                    mySQLiteOpenHelper.deleteDiary(getIntent().getStringExtra("title"));
-                                    Cursor cursor2 = mySQLiteOpenHelper.getDiary(db_diarytitle);
+                                    mySQLiteOpenHelper.deleteDiary(getIntent().getStringExtra("title"),username);
+                                    Cursor cursor2 = mySQLiteOpenHelper.getDiary(db_diarytitle,username);
                                     while (cursor2.moveToNext()){
 //                                        String title = cursor2.getString(cursor.getColumnIndex("title"));
 //                                        String text = cursor2.getString(cursor.getColumnIndex("diarytext"));
@@ -282,7 +308,7 @@ public class diaryWrite extends Activity implements View.OnClickListener, PopupM
                                     }
                                 }
                                 mySQLiteOpenHelper.insertDiary(diaryBean);
-                                Cursor cursor3 = mySQLiteOpenHelper.getDiary(db_diarytitle);
+                                Cursor cursor3 = mySQLiteOpenHelper.getDiary(db_diarytitle,username);
                                 while (cursor3.moveToNext()){
 //                                        String title = cursor2.getString(cursor.getColumnIndex("title"));
 //                                        String text = cursor2.getString(cursor.getColumnIndex("diarytext"));
@@ -302,6 +328,7 @@ public class diaryWrite extends Activity implements View.OnClickListener, PopupM
 //                                    Log.e("bcg_saved","为"+cursor.getInt(cursor.getColumnIndex("background")));
 //                                }
 //                                Log.e("db","diaryinsert");
+                                Log.e("login3","uid:"+username);
                                 Intent dbintent = new Intent(diaryWrite.this,MainActivity.class);
                                 dbintent.putExtra("page",2);
                                 startActivity(dbintent);
@@ -365,8 +392,10 @@ public class diaryWrite extends Activity implements View.OnClickListener, PopupM
                 backgroundpic = R.drawable.diarybackground_fangge2;
                 break;
             case R.id.popmemu_diary_line:
-                constraintLayout.setBackgroundResource(R.drawable.diarybackgroud_line);
-                backgroundpic = R.drawable.diarybackgroud_line;
+                //constraintLayout.setBackgroundResource(R.drawable.diarybackgroud_line);
+                //backgroundpic = R.drawablejjjjj.diarybackgroud_line;
+                constraintLayout.setBackgroundResource(R.drawable.diarybackground_blue);
+                backgroundpic = R.drawable.diarybackground_blue;
                 break;
             case R.id.popmemu_diary_flower:
                 constraintLayout.setBackgroundResource(R.drawable.diarybackground_flower);

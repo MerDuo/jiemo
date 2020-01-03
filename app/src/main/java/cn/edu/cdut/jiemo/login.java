@@ -158,6 +158,8 @@ public class login extends AppCompatActivity{
         SharedPreferences.Editor editor=sp.edit();
         //存入boolean类型的登录状态
         editor.putBoolean("isLogin", status);
+        // 删除用户名
+        editor.putString("loginUserName", "");
         //提交修改
         editor.commit();
     }

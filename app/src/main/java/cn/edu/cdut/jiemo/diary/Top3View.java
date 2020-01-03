@@ -1,9 +1,12 @@
 package cn.edu.cdut.jiemo.diary;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -35,6 +38,14 @@ public class Top3View extends RelativeLayout {
         tv_r.setTextColor(tv_color_r);
 
         typedArray.recycle();
+        ImageView return_btn = findViewById(R.id.returnbtn);
+        return_btn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(context,"close",Toast.LENGTH_SHORT).show();
+                ((Activity)getContext()).finish();
+            }
+        });
     }
     public void setText(String text){
         tv.setText(text);

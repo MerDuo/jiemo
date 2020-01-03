@@ -42,7 +42,7 @@ public class inputSecuritypwd extends AppCompatActivity{
         String etString=inputSecurityPwd.getText().toString();
         if(content.equals(etString)){
 
-            Intent intent = new Intent(inputSecuritypwd.this, welcome.class);
+            Intent intent = new Intent(inputSecuritypwd.this, MainActivity.class);
             startActivity(intent);
 
             SharedPreferences.Editor editor=securityState.edit();

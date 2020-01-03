@@ -39,20 +39,20 @@ public class register extends AppCompatActivity {
         init();
     }
     private void init(){
-        back = findViewById(R.id.btnPtev);
+//        back = findViewById(R.id.btnPtev);
         regisbtn = findViewById(R.id.regisbtn);
         username = findViewById(R.id.phone);
         password = findViewById(R.id.password);
         password2 = findViewById(R.id.password2);
         mySQLiteOpenHelper = new sqLite(this);
         myDatabase = mySQLiteOpenHelper.getWritableDatabase();
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //返回键
-                register.this.finish();
-            }
-        });
+//        back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //返回键
+//                register.this.finish();
+//            }
+//        });
         regisbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

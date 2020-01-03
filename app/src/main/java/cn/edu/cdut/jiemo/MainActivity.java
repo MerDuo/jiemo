@@ -15,10 +15,11 @@ import com.zhy.changeskin.SkinManager;
 
 import cn.edu.cdut.jiemo.diary.SectionsPagerAdapter;
 import cn.edu.cdut.jiemo.mine.mine;
-import cn.edu.cdut.jiemo.mine.securityPwd;
-import cn.edu.cdut.jiemo.mine.securitySetting;
 import cn.edu.cdut.jiemo.schedule.addplan;
 import cn.edu.cdut.jiemo.mine.inputSecuritypwd;
+import cn.edu.cdut.jiemo.schedule.sqLite;
+import cn.edu.cdut.jiemo.userBean.userBean;
+
 public class MainActivity extends AppCompatActivity implements OnClickListener{
 
     SharedPreferences securityState;
@@ -26,12 +27,23 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
     Boolean isOK;
     private ScrollView scrollView = null;
 
+    private sqLite mySQLiteOpenHelper;
+    userBean user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //注册换肤功能
         SkinManager.getInstance().register(this);
         setContentView(R.layout.activity_main);
+
+            String uname = "test";
+            String psw = "123123";
+            mySQLiteOpenHelper = new sqLite(this);
+            userBean user = new userBean();
+            user.userName = uname;
+            user.password = psw;
+            mySQLiteOpenHelper.addUser(user);
 
         securityState=getSharedPreferences("securityState",MODE_PRIVATE);
         state=securityState.getBoolean("securityState",false);

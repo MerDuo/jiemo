@@ -9,4 +9,5 @@ public class DiaryBean {
     public String diarytime;
     public String diarycategory;
     public int background;
+    public String uname;
 }

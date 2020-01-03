@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zhy.changeskin.SkinManager;
@@ -18,6 +19,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
+
+import cn.edu.cdut.jiemo.MainActivity;
 import cn.edu.cdut.jiemo.R;
 import cn.edu.cdut.jiemo.fragment.titleFragment;
 import cn.edu.cdut.jiemo.login;
@@ -74,6 +77,15 @@ public class mine extends AppCompatActivity {
     //设置点击事件函数
     protected void setClickListeners(){
 
+        ImageView returnbtn = findViewById(R.id.returnbtn);
+        returnbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mine.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
         //点击更改主题跳转到更改主题界面
         personalItemActivity changeTheme=findViewById(R.id.theme);
         changeTheme.setOnClickListener(new View.OnClickListener(){
@@ -112,8 +124,8 @@ public class mine extends AppCompatActivity {
         }
         //设置导航栏宽度
         //
-        titleFragment titlefragment=(titleFragment)getSupportFragmentManager().findFragmentById(R.id.title_fragement);
-        titlefragment.setButtompadding(70);
+//        titleFragment titlefragment=(titleFragment)getSupportFragmentManager().findFragmentById(R.id.title_fragement);
+//        titlefragment.setButtompadding(70);
     }
 
     //刷新界面的数据
@@ -186,6 +198,8 @@ public class mine extends AppCompatActivity {
                 SharedPreferences sp=getSharedPreferences("loginInfo", MODE_PRIVATE);
                 SharedPreferences.Editor editor=sp.edit();
                 editor.putBoolean("isLogin", false);
+                // 删除用户名
+                editor.putString("loginUserName","");
                 editor.commit();
                 //恢复默认主题色
                 SkinManager.getInstance().changeSkin("");

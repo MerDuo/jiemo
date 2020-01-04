@@ -5,7 +5,6 @@ import android.content.Context;
 //import android.support.multidex.MultiDex;
 
 
-import androidx.multidex.MultiDex;
 
 import com.zhy.changeskin.SkinManager;
 
@@ -20,10 +19,11 @@ public class myApplication extends Application {
         //初始化skinmanager换肤操作
         SkinManager.getInstance().init(this);
     }
-    //这是一个重新方法
-    @Override
-    protected void attachBaseContext(Context base) {
-        super.attachBaseContext(base);
-        MultiDex.install(this);
-    }
+//    //这是一个重新方法
+//    @Override
+//    protected void attachBaseContext(Context base) {
+//        super.attachBaseContext(base);
+//        Mult
+//        Dex.install(this);
+//    }
 }
